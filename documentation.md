@@ -1,27 +1,131 @@
-# 📓 Journal de Bord - Projet ALUMNI GRETA
+# Journal de Bord - Projet ALUMNI GRETA
 
-## 📅 Séance du Mercredi 17 Mars 2026 
+## Séance du Lundi 16 Mars 2026
 
-### 🎯 Évolution du Concept (Pivot)
-Suite aux retours des cadres du GRETA (notamment suite à l'envoi du questionnaire technique), le projet a été recentré :
-- **Cible prioritaire :** Les usagers actuels en cours de formation.
-- **Besoin identifié :** Recherche active de lieux de stage et premier emploi via le réseau.
-- **Fonction centrale :** L'Annuaire des Apprenants (le "qui fait quoi et où").
+### 1. Installation du Poste de Travail (Matinée)
 
-### 💾 Réflexions sur la Base de Données
-L'après-midi a été consacré à la modélisation. Choix effectués :
-1. **Structure Relationnelle (MySQL) :** Indispensable pour lier les apprenants aux entreprises de stage récurrentes.
-2. **Architecture des Tables :**
-    - Mise en place d'une table `Entreprises` robuste pour transformer l'annuaire en base de données de prospection pour les stagiaires.
-    - Ajout d'un champ `Statut_Recherche` (En recherche de stage / En poste) pour filtrer les profils actifs.
-3. **Optimisation :** Séparation des données d'identité et des données de parcours pour respecter le RGPD tout en permettant des statistiques fiables. (Après réalisation de recherche sur le RGPD concernant le client cible "éducation National")
+L'objectif était de configurer un environnement Full Stack complet (PHP 8.5, Node.js, MySQL). Cette phase a été marquée par plusieurs blocages techniques liés aux restrictions du système et du réseau.
 
-### 📧 Validation Direction
-Le questionnaire a été validé pour sa précision technique et sera transmis à **Thierry Colin (Directeur)** pour élargir la vision stratégique du projet - toujours en attente de sa réponse.
+#### Configuration de l'IDE et de Git
+
+- **Visual Studio Code** : Installation et synchronisation des paramètres via GitHub.
+- **Git for Windows** : Installation de Git et Git Bash pour disposer d'un terminal Unix-like et préparer le versionnement.
+
+#### Environnement Backend : PHP 8.5 et Xdebug
+
+- **Moteur PHP** : Installation manuelle de PHP 8.5.
+  - **Incident 1** : Commande PHP non reconnue. Résolution par l'ajout manuel du chemin dans les variables d'environnement (PATH).
+  - **Incident 2** : Erreur de compatibilité VCRUNTIME140.dll. Résolution par la mise à jour des bibliothèques Redistribuables Visual C++ (VC17).
+- **Xdebug** : Configuration pour le débogage.
+  - **Résolution** : Utilisation du Wizard Xdebug, activation de `extension_dir = "ext"` dans le php.ini et renommage de la DLL en `php_xdebug.dll`.
+- **Composer** : Installation réussie et liaison avec l'exécutable PHP.
+
+#### Environnement Frontend : Node.js et NPM
+
+- **Node.js** : Installation du moteur et du gestionnaire de paquets NPM.
+  - **Incident 3** : Exécution de scripts bloquée par PowerShell. Résolution via la commande `Set-ExecutionPolicy RemoteSigned`.
+  - **Incident 4 (Blocage Réseau)** : Erreur `ERR_SSL_PACKET_LENGTH_TOO_LONG` lors des tentatives d'installation de Vite, React et Tailwind.
+  - **Actions de contournement** : Désactivation du SSL strict, bascule du registre en HTTP et nettoyage du cache. Le problème persiste malgré ces tentatives, indiquant un blocage au niveau du proxy/pare-feu de l'établissement.
 
 ---
 
-## 🛠️ Stack Technique retenue
-- **Front-end :** React.js (pour la réactivité de l'annuaire).
-- **Styling :** Tailwind CSS (pour un design pro respectant les codes du GRETA).
-- **Back-end :** PHP (pour la robustesse du traitement des données) - attente de la réunion avec Julien voir si c'est bien PHP(version?) ou sinon ?ASP?
+### 2. Étude de Projet et Réunion Stratégique
+
+Entretien avec Laura pour définir les contours concrets du projet Alumni GRETA Sud Champagne.
+
+- **Calendrier** : Réunion de présentation fixée au 10 avril avec un objectif de 85% de réalisation du projet.
+- **Périmètre** : Le projet couvre 8 filières, dont 4 prioritaires (HRT, Tertiaire, Numérique, Industries).
+- **Références et Veille** : Analyse du site BSB (Business School) comme référence ergonomique et fonctionnelle.
+- **Conformité RGPD** : Nécessité de structurer le recueil d'informations (Google Forms) selon les normes de protection des données.
+- **Missions annexes** : Prise de vues de la classe BTS et gestion administrative pour le référencement sur la plateforme DORA.
+
+---
+
+### 3. Analyse Fonctionnelle (Après-midi avec David)
+
+Session de travail avec le formateur pour lever les incompréhensions techniques et structurer la phase de développement.
+
+- **Audit Fonctionnel** : Définition précise des besoins utilisateurs et des services rendus par la plateforme.
+- **User Cases** : Rédaction des cas d'utilisation pour modéliser les interactions entre les Alumni, les entreprises et l'administration.
+- **Infrastructure** : Préparation d'un second questionnaire technique portant sur le déploiement, l'hébergement et la rédaction des mentions légales.
+- **Docker** : Réflexion sur l'utilisation de Docker pour isoler l'environnement de développement et garantir la parité avec la production.
+
+---
+
+### 4. État d'Avancement et Reste à Faire
+
+Le poste de travail est configuré à environ 70%. Les outils Backend sont opérationnels, tandis que les outils Frontend nécessitent une intervention sur la configuration réseau.
+
+- **Action prioritaire** : Demander l'ouverture des flux vers `registry.npmjs.org` sur le port 443 à l'administrateur réseau.
+- **Documentation** : Rédaction du cahier des charges intégrant les nouveaux éléments stratégiques.
+- **Maquettage** : Réflexion sur la Landing Page en s'inspirant de la référence BSB.
+
+## Séance du Mardi 17 Mars 2026
+
+### Évolution du Concept (Pivot)
+
+Suite aux retours des cadres du GRETA, le projet est recentré sur les usagers en cours de formation pour faciliter la recherche de stages et le réseautage via un Annuaire des Apprenants.
+
+### Réflexions sur la Base de Données
+
+L'après-midi a été consacré à la modélisation théorique :
+
+- Choix de MySQL pour la gestion des relations apprenants/entreprises.
+- Création d'une table Entreprises orientée prospection.
+- Segmentation des données pour la conformité RGPD (client Éducation Nationale).
+
+### Stack Technique retenue
+
+- Front-end : React.js.
+- Styling : Tailwind CSS.
+- Back-end : PHP (version à confirmer avec l'équipe technique).
+
+---
+
+## Séance du Mercredi 18 Mars 2026
+
+### Matinée : Configuration de l'Environnement
+
+- Mise en place d'un environnement WAMP via EasyPHP Devserver.
+- Résolution d'erreurs système (MSVCR110.dll manquante) par l'installation des packages redistribuables Visual C++.
+- Configuration de phpMyAdmin (PHP 7.2.5) pour l'administration graphique de la BDD.
+
+### Après-midi : Modélisation Technique et Analyse
+
+- Réalisation du MCD V1 sur DrawMySQL : création des tables Utilisateurs, Formations et Entreprises.
+- Analyse fonctionnelle du MVP : focus sur le module de recherche et le suivi d'insertion.
+- Veille réglementaire : étude du RGAA et exploration du Système de Design de l'État (DSFR).
+
+---
+
+## Séance du Jeudi 19 Mars 2026 (Matinée)
+
+### Identité Graphique et UI (Figma)
+
+Application du DSFR pour garantir l'accessibilité institutionnelle :
+
+- Déclaration des variables de couleurs (Bleu France, Blanc, Gris, Orange GRETA).
+- Configuration de la typographie Marianne (tokens responsifs).
+- Mise en place du système d'espacement modulaire (base 4px).
+
+### Optimisation SEO et Core Web Vitals
+
+Révision des indicateurs de performance pour le maquettage :
+
+- LCP : optimisation des médias.
+- INP : réactivité des interactions.
+- CLS : réservation des espaces via dimensions fixes en CSS.
+
+### Évolution de la Base de Données (V1 vers V2)
+
+Revue de l'architecture avec le formateur sur DrawMySQL :
+
+- Allègement de la structure par suppression de tables redondantes.
+- Refactorisation des relations pour l'intégrité des données.
+
+---
+
+### Objectifs de l'Après-midi
+
+- Figma : Création des composants (Header, Boutons, Cartes formation) et du KIT UX.
+- BDD V3 : Intégration des photos de profil (aspect réseau social) et création de la table Réseaux (LinkedIn, GitHub, Gmail).
