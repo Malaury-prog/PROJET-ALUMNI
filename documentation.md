@@ -129,3 +129,35 @@ Revue de l'architecture avec le formateur sur DrawMySQL :
 
 - Figma : Création des composants (Header, Boutons, Cartes formation) et du KIT UX.
 - BDD V3 : Intégration des photos de profil (aspect réseau social) et création de la table Réseaux (LinkedIn, GitHub, Gmail).
+
+## Récapitulatif de l'après-midi
+
+### 🎨 Design System & UI (Figma)
+* **Approche "From Scratch" :** Choix de ne pas utiliser de bibliothèque UI Kit externe pour démontrer la maîtrise des fondamentaux du Design System et le respect de la charte **DSFR (Marianne)**.
+* **Gestion des Variables :**
+    * **Spacing :** Mise en place d'un système modulaire basé sur l'unité **`v` (4px)** pour garantir une grille de construction rigoureuse.
+    * **Line-height :** Liaison dynamique de l'interlignage avec les variables de spacing (`8v`, `10v`, etc.) pour une cohérence verticale parfaite.
+* **Typographie Responsive :**
+    * Création de **12 Text Styles** organisés en dossiers (`Desktop/` et `Mobile/`).
+    * Hiérarchie allant de **H1 à Small**, paramétrée pour s'adapter automatiquement aux différents terminaux.
+* **Composants Avancés :**
+    * Création de la **Carte Parent (Alumni)** en Auto Layout.
+    * Développement d'atomes (**Tags/Badges**) avec propriétés de variantes (Orange/Gris) et propriétés booléennes pour une flexibilité maximale.
+
+### 🏗 Infrastructure & DevOps
+* **Virtualisation :** Configuration d'un environnement de développement via **Oracle VirtualBox**.
+* **Administration :** Déploiement de **YunoHost** pour la gestion centralisée de l'auto-hébergement.
+* **Stack Technique (4 outils opérationnels) :**
+    1. **phpMyAdmin :** Gestion et administration de la base de données.
+    2. **My WebApp :** Serveur d'hébergement pour l'application Web.
+    3. **n8n :** Automatisation de workflows et liaison de services.
+    4. **Vaultwarden :** Gestion sécurisée des identifiants et accès de l'environnement.
+
+### 💾 Data & Backend
+* **Modélisation V3 :** Analyse et restructuration de la base de données (Tables `Users`, `Promotions`, `Social_Links`).
+* **Objectif :** Mise en corrélation directe de la structure SQL avec les besoins identifiés lors de la création des composants Figma.
+
+### 🚀 Objectifs du Week-end
+* Finalisation de l'intégralité des **Frames Figma** (Maquettes haute fidélité).
+* Verrouillage du schéma de données **BDD V3**.
+* Préparation du premier sprint de développement (Front-end & Backend).
