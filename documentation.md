@@ -137,6 +137,28 @@ Revue de l'architecture avec le formateur sur DrawMySQL :
 * **Gestion des Variables :**
     * **Spacing :** Mise en place d'un système modulaire basé sur l'unité **`v` (4px)** pour garantir une grille de construction rigoureuse.
     * **Line-height :** Liaison dynamique de l'interlignage avec les variables de spacing (`8v`, `10v`, etc.) pour une cohérence verticale parfaite.
+
+    ### 📖 Guide de Style Typographique (Marianne)
+
+| Style | Taille | Graisse | Line-Height (v) | Usage |
+| :--- | :--- | :--- | :--- | :--- |
+| **Desktop / H1** | 40px | Bold (700) | **12v** (48px) | Titre principal |
+| **Desktop / H2** | 32px | Bold (700) | **10v** (40px) | Titres de section |
+| **Desktop / H3** | 28px | Bold (700) | **9v** (36px) | Sous-sections |
+| **Desktop / H4** | 24px | Bold (700) | **8v** (32px) | **Noms sur les cartes** |
+| **Desktop / Body** | 16px | Regular (400) | **6v** (24px) | Texte courant |
+| **Desktop / Small** | 14px | Regular (400) | **5v** (20px) | Infos secondaires |
+| | | | | |
+| **Mobile / H1** | 32px | Bold (700) | **10v** (40px) | Titre mobile |
+| **Mobile / H2** | 28px | Bold (700) | **9v** (36px) | Section mobile |
+| **Mobile / H3** | 24px | Bold (700) | **8v** (32px) | Sous-titre mobile |
+| **Mobile / H4** | 22px | Bold (700) | **7v** (28px) | Nom carte mobile |
+| **Mobile / Body** | 16px | Regular (400) | **6v** (24px) | Texte mobile |
+| **Mobile / Small** | 14px | Regular (400) | **5v** (20px) | Infos secondaires |
+
+> **Note technique :** L'unité de base **1v** est fixée à **4px**. Toute modification de cette variable impactera l'ensemble du système d'espacement et d'interlignage du projet.
+
+
 * **Typographie Responsive :**
     * Création de **12 Text Styles** organisés en dossiers (`Desktop/` et `Mobile/`).
     * Hiérarchie allant de **H1 à Small**, paramétrée pour s'adapter automatiquement aux différents terminaux.
@@ -161,3 +183,28 @@ Revue de l'architecture avec le formateur sur DrawMySQL :
 * Finalisation de l'intégralité des **Frames Figma** (Maquettes haute fidélité).
 * Verrouillage du schéma de données **BDD V3**.
 * Préparation du premier sprint de développement (Front-end & Backend).
+
+
+
+
+## Séance du Vendredi 20 Mars 2026 (Matinée)
+##  Architecture Base de Données - Évolution V3
+
+###  Objectifs de la V3
+Passage d'un modèle conceptuel à un schéma relationnel optimisé pour le développement Full Stack. L'architecture a été affinée pour respecter la 3ème Forme Normale (3NF), garantissant l'intégrité des données et des requêtes SQL performantes pour l'affichage de l'annuaire.
+
+###  Fondations conservées (Héritage V1/V2)
+* **Le Cœur Utilisateur :** Table `utilisateurs` centralisant l'authentification (mot de passe préparé pour le hashage en `VARCHAR(255)`) et les informations de profil.
+* **L'Écosystème & Contacts :** Tables `entreprises`, `formations` et `contacts` pour structurer le maillage du réseau et conserver un suivi précis des interlocuteurs professionnels.
+* **La Géographie :** La table de liaison `formation_ville` pour gérer correctement les formations dispensées sur plusieurs bassins géographiques.
+* **Le Pivot Central :** La table `parcours`, table de liaison complexe retraçant l'historique complet de l'élève (quelle formation, quelle date, quelle entreprise).
+
+###  Nouveautés et Optimisations (Ajouts spécifiques V3)
+* **Table `reseaux` :** NOUVELLE table (relation 1-to-Many) isolant les liens externes (LinkedIn, GitHub, portfolio) de la table principale `utilisateurs`. Indispensable pour alimenter le bloc "Social Links" de la nouvelle carte UI.
+* **Table `sessions` (Promotions) :** Séparation du "catalogue" (`formations`) et de la "cohorte" (`sessions`). Ajout crucial pour permettre le filtrage des Alumni par année de promotion.
+* **Table `secteurs_greta` :** Création d'une table de référence pour normaliser les secteurs d'activité, évitant les doublons syntaxiques et fiabilisant les futurs menus déroulants.
+* **Standardisation du Naming :** Application stricte des conventions de nommage SQL (`snake_case`, noms de tables au pluriel) pour le futur backend PHP.
+* **Optimisation de l'UI :** Déplacement de la clé étrangère `statut_id` (badge "En poste") directement dans la table `utilisateurs` pour éviter une jointure SQL lourde lors de l'affichage de la grille de l'annuaire.
+
+###  Choix Techniques & "Scoping" (Périmètre)
+* **Exclusion de la table `competences` :** Décision métier assumée et validée. La disparité extrême des filières du réseau rendrait le maintien d'un dictionnaire de compétences ingérable. L'expression des acquis se fera via un champ texte libre (`description`), allégeant considérablement la base.
