@@ -291,3 +291,45 @@ Références utilisées :
 DSFR : Système de Design de l'État.
 
 Système de grille : Utilisation de l'unité v (multiples de 8px) pour la cohérence spatiale.
+
+## Séance du Lundi 23 Mars (Après-midi)
+
+## 1. Amélioration de l'Interface Utilisateur (UI)
+
+Ajustements visuels pour mettre en valeur le contenu tout en respectant la sobriété du DSFR.
+
+Optimisation du contraste (Derniers Profils) : Création d'une "délimitation de zone" avec un fond gris très clair (`Bg-disable`) pour faire ressortir les cartes blanches (effet "pop") sans surcharger le design.
+
+Création de la section "Chiffres Clés" : Conception d'un atome réutilisable `Stat_Card` (chiffre `Display` + légende) intégré sur un bandeau pleine largeur `Blue-France` pour apporter de la crédibilité via un fort contraste.
+
+## 2. Conception des Composants et Layouts
+
+Structuration des éléments réutilisables pour préparer l'intégration CSS (Flexbox/Grid).
+
+Section Valeurs et Arguments : Création d'un composant standard `Feature_Block` (Icône + Titre + Texte) avec des espacements stricts (Gap 16px, Padding 24px) et un alignement horizontal "Space between".
+
+Intégration optimisée des assets : Utilisation du plugin Iconify pour intégrer des icônes vectorielles professionnelles (Mentorat, Opportunités, Visibilité) facilement manipulables et aux couleurs de la charte.
+
+## 3. Expérience Utilisateur (UX) et Éditorial
+
+Ajustement du rythme de la page pour éviter la monotonie visuelle et guider la lecture.
+
+Section éditoriale asymétrique (50/50) : Disposition en deux colonnes (50% Texte / 50% Image) pour casser la symétrie des grilles précédentes et apporter une dimension narrative.
+
+Génération d'assets sur-mesure : Rédaction d'un prompt Midjourney ciblé pour générer une photographie institutionnelle, lumineuse et inclusive, illustrant la collaboration professionnelle.
+
+## 4. Architecture Logique et Choix Back-End
+
+Réflexions de "Lead Développeur" appliquées aux décisions d'interface.
+
+Sécurité et base de données (CTA) : Refus d'un bouton d'inscription libre pour privilégier un système fermé (comptes provisionnés par le Greta), évitant la gestion de faux profils et sécurisant la BDD.
+
+Adaptation du parcours utilisateur : Remplacement du bouton d'inscription par un bloc "Explorez l'annuaire" pour ne pas laisser l'utilisateur face à un "mur" en fin de page.
+
+## 5. Conformité Institutionnelle et Accessibilité
+
+Respect strict des normes obligatoires du Design System de l'État (RGAA / DSFR).
+
+Conception du Footer DSFR : Création d'un Master Component pensé en blocs (divs `Footer_Top` et `Footer_Bottom`) pour calquer la future intégration HTML/CSS.
+
+Intégration des obligations légales : Ajout de la bordure signature `Blue-France`, des liens institutionnels obligatoires, des pages légales et de la licence Etalab-2.0.
