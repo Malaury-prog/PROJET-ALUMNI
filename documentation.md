@@ -1,4 +1,6 @@
-# Journal de Bord - Projet ALUMNI GRETA
+## Journal de Bord - Projet ALUMNI GRETA
+
+# PREMIERE SEMAINE
 
 ## Séance du Lundi 16 Mars 2026
 
@@ -133,78 +135,159 @@ Revue de l'architecture avec le formateur sur DrawMySQL :
 ## Récapitulatif de l'après-midi
 
 ### Design System & UI (Figma)
-* **Approche "From Scratch" :** Choix de ne pas utiliser de bibliothèque UI Kit externe pour démontrer la maîtrise des fondamentaux du Design System et le respect de la charte **DSFR (Marianne)**.
-* **Gestion des Variables :**
-    * **Spacing :** Mise en place d'un système modulaire basé sur l'unité **`v` (4px)** pour garantir une grille de construction rigoureuse.
-    * **Line-height :** Liaison dynamique de l'interlignage avec les variables de spacing (`8v`, `10v`, etc.) pour une cohérence verticale parfaite.
 
-    ### 📖 Guide de Style Typographique (Marianne)
+- **Approche "From Scratch" :** Choix de ne pas utiliser de bibliothèque UI Kit externe pour démontrer la maîtrise des fondamentaux du Design System et le respect de la charte **DSFR (Marianne)**.
+- **Gestion des Variables :**
+  - **Spacing :** Mise en place d'un système modulaire basé sur l'unité **`v` (4px)** pour garantir une grille de construction rigoureuse.
+  - **Line-height :** Liaison dynamique de l'interlignage avec les variables de spacing (`8v`, `10v`, etc.) pour une cohérence verticale parfaite.
 
-| Style | Taille | Graisse | Line-Height (v) | Usage |
-| :--- | :--- | :--- | :--- | :--- |
-| **Desktop / H1** | 40px | Bold (700) | **12v** (48px) | Titre principal |
-| **Desktop / H2** | 32px | Bold (700) | **10v** (40px) | Titres de section |
-| **Desktop / H3** | 28px | Bold (700) | **9v** (36px) | Sous-sections |
-| **Desktop / H4** | 24px | Bold (700) | **8v** (32px) | **Noms sur les cartes** |
-| **Desktop / Body** | 16px | Regular (400) | **6v** (24px) | Texte courant |
-| **Desktop / Small** | 14px | Regular (400) | **5v** (20px) | Infos secondaires |
-| | | | | |
-| **Mobile / H1** | 32px | Bold (700) | **10v** (40px) | Titre mobile |
-| **Mobile / H2** | 28px | Bold (700) | **9v** (36px) | Section mobile |
-| **Mobile / H3** | 24px | Bold (700) | **8v** (32px) | Sous-titre mobile |
-| **Mobile / H4** | 22px | Bold (700) | **7v** (28px) | Nom carte mobile |
-| **Mobile / Body** | 16px | Regular (400) | **6v** (24px) | Texte mobile |
-| **Mobile / Small** | 14px | Regular (400) | **5v** (20px) | Infos secondaires |
+  ### 📖 Guide de Style Typographique (Marianne)
+
+| Style               | Taille | Graisse       | Line-Height (v) | Usage                   |
+| :------------------ | :----- | :------------ | :-------------- | :---------------------- |
+| **Desktop / H1**    | 40px   | Bold (700)    | **12v** (48px)  | Titre principal         |
+| **Desktop / H2**    | 32px   | Bold (700)    | **10v** (40px)  | Titres de section       |
+| **Desktop / H3**    | 28px   | Bold (700)    | **9v** (36px)   | Sous-sections           |
+| **Desktop / H4**    | 24px   | Bold (700)    | **8v** (32px)   | **Noms sur les cartes** |
+| **Desktop / Body**  | 16px   | Regular (400) | **6v** (24px)   | Texte courant           |
+| **Desktop / Small** | 14px   | Regular (400) | **5v** (20px)   | Infos secondaires       |
+|                     |        |               |                 |                         |
+| **Mobile / H1**     | 32px   | Bold (700)    | **10v** (40px)  | Titre mobile            |
+| **Mobile / H2**     | 28px   | Bold (700)    | **9v** (36px)   | Section mobile          |
+| **Mobile / H3**     | 24px   | Bold (700)    | **8v** (32px)   | Sous-titre mobile       |
+| **Mobile / H4**     | 22px   | Bold (700)    | **7v** (28px)   | Nom carte mobile        |
+| **Mobile / Body**   | 16px   | Regular (400) | **6v** (24px)   | Texte mobile            |
+| **Mobile / Small**  | 14px   | Regular (400) | **5v** (20px)   | Infos secondaires       |
 
 > **Note technique :** L'unité de base **1v** est fixée à **4px**. Toute modification de cette variable impactera l'ensemble du système d'espacement et d'interlignage du projet.
 
-
-* **Typographie Responsive :**
-    * Création de **12 Text Styles** organisés en dossiers (`Desktop/` et `Mobile/`).
-    * Hiérarchie allant de **H1 à Small**, paramétrée pour s'adapter automatiquement aux différents terminaux.
-* **Composants Avancés :**
-    * Création de la **Carte Parent (Alumni)** en Auto Layout.
-    * Développement d'atomes (**Tags/Badges**) avec propriétés de variantes (Orange/Gris) et propriétés booléennes pour une flexibilité maximale.
+- **Typographie Responsive :**
+  - Création de **12 Text Styles** organisés en dossiers (`Desktop/` et `Mobile/`).
+  - Hiérarchie allant de **H1 à Small**, paramétrée pour s'adapter automatiquement aux différents terminaux.
+- **Composants Avancés :**
+  - Création de la **Carte Parent (Alumni)** en Auto Layout.
+  - Développement d'atomes (**Tags/Badges**) avec propriétés de variantes (Orange/Gris) et propriétés booléennes pour une flexibilité maximale.
 
 ### Infrastructure & DevOps
-* **Virtualisation :** Configuration d'un environnement de développement via **Oracle VirtualBox**.
-* **Administration :** Déploiement de **YunoHost** pour la gestion centralisée de l'auto-hébergement.
-* **Stack Technique (4 outils opérationnels) :**
-    1. **phpMyAdmin :** Gestion et administration de la base de données.
-    2. **My WebApp :** Serveur d'hébergement pour l'application Web.
-    3. **n8n :** Automatisation de workflows et liaison de services.
-    4. **Vaultwarden :** Gestion sécurisée des identifiants et accès de l'environnement.
+
+- **Virtualisation :** Configuration d'un environnement de développement via **Oracle VirtualBox**.
+- **Administration :** Déploiement de **YunoHost** pour la gestion centralisée de l'auto-hébergement.
+- **Stack Technique (4 outils opérationnels) :**
+  1. **phpMyAdmin :** Gestion et administration de la base de données.
+  2. **My WebApp :** Serveur d'hébergement pour l'application Web.
+  3. **n8n :** Automatisation de workflows et liaison de services.
+  4. **Vaultwarden :** Gestion sécurisée des identifiants et accès de l'environnement.
 
 ### Data & Backend
-* **Modélisation V3 :** Analyse et restructuration de la base de données (Tables `Users`, `Promotions`, `Social_Links`).
-* **Objectif :** Mise en corrélation directe de la structure SQL avec les besoins identifiés lors de la création des composants Figma.
+
+- **Modélisation V3 :** Analyse et restructuration de la base de données (Tables `Users`, `Promotions`, `Social_Links`).
+- **Objectif :** Mise en corrélation directe de la structure SQL avec les besoins identifiés lors de la création des composants Figma.
 
 ### Objectifs du Week-end
-* Finalisation de l'intégralité des **Frames Figma** (Maquettes haute fidélité).
-* Verrouillage du schéma de données **BDD V3**.
-* Préparation du premier sprint de développement (Front-end & Backend).
 
-
-
+- Finalisation de l'intégralité des **Frames Figma** (Maquettes haute fidélité).
+- Verrouillage du schéma de données **BDD V3**.
+- Préparation du premier sprint de développement (Front-end & Backend).
 
 ## Séance du Vendredi 20 Mars 2026 (Matinée)
-##  Architecture Base de Données - Évolution V3
 
-###  Objectifs de la V3
+## Architecture Base de Données - Évolution V3
+
+### Objectifs de la V3
+
 Passage d'un modèle conceptuel à un schéma relationnel optimisé pour le développement Full Stack. L'architecture a été affinée pour respecter la 3ème Forme Normale (3NF), garantissant l'intégrité des données et des requêtes SQL performantes pour l'affichage de l'annuaire.
 
-###  Fondations conservées (Héritage V1/V2)
-* **Le Cœur Utilisateur :** Table `utilisateurs` centralisant l'authentification (mot de passe préparé pour le hashage en `VARCHAR(255)`) et les informations de profil.
-* **L'Écosystème & Contacts :** Tables `entreprises`, `formations` et `contacts` pour structurer le maillage du réseau et conserver un suivi précis des interlocuteurs professionnels.
-* **La Géographie :** La table de liaison `formation_ville` pour gérer correctement les formations dispensées sur plusieurs bassins géographiques.
-* **Le Pivot Central :** La table `parcours`, table de liaison complexe retraçant l'historique complet de l'élève (quelle formation, quelle date, quelle entreprise).
+### Fondations conservées (Héritage V1/V2)
 
-###  Nouveautés et Optimisations (Ajouts spécifiques V3)
-* **Table `reseaux` :** NOUVELLE table (relation 1-to-Many) isolant les liens externes (LinkedIn, GitHub, portfolio) de la table principale `utilisateurs`. Indispensable pour alimenter le bloc "Social Links" de la nouvelle carte UI.
-* **Table `sessions` (Promotions) :** Séparation du "catalogue" (`formations`) et de la "cohorte" (`sessions`). Ajout crucial pour permettre le filtrage des Alumni par année de promotion.
-* **Table `secteurs_greta` :** Création d'une table de référence pour normaliser les secteurs d'activité, évitant les doublons syntaxiques et fiabilisant les futurs menus déroulants.
-* **Standardisation du Naming :** Application stricte des conventions de nommage SQL (`snake_case`, noms de tables au pluriel) pour le futur backend PHP.
-* **Optimisation de l'UI :** Déplacement de la clé étrangère `statut_id` (badge "En poste") directement dans la table `utilisateurs` pour éviter une jointure SQL lourde lors de l'affichage de la grille de l'annuaire.
+- **Le Cœur Utilisateur :** Table `utilisateurs` centralisant l'authentification (mot de passe préparé pour le hashage en `VARCHAR(255)`) et les informations de profil.
+- **L'Écosystème & Contacts :** Tables `entreprises`, `formations` et `contacts` pour structurer le maillage du réseau et conserver un suivi précis des interlocuteurs professionnels.
+- **La Géographie :** La table de liaison `formation_ville` pour gérer correctement les formations dispensées sur plusieurs bassins géographiques.
+- **Le Pivot Central :** La table `parcours`, table de liaison complexe retraçant l'historique complet de l'élève (quelle formation, quelle date, quelle entreprise).
 
-###  Choix Techniques & "Scoping" (Périmètre)
-* **Exclusion de la table `competences` :** Décision métier assumée et validée. La disparité extrême des filières du réseau rendrait le maintien d'un dictionnaire de compétences ingérable. L'expression des acquis se fera via un champ texte libre (`description`), allégeant considérablement la base.
+### Nouveautés et Optimisations (Ajouts spécifiques V3)
+
+- **Table `reseaux` :** NOUVELLE table (relation 1-to-Many) isolant les liens externes (LinkedIn, GitHub, portfolio) de la table principale `utilisateurs`. Indispensable pour alimenter le bloc "Social Links" de la nouvelle carte UI.
+- **Table `sessions` (Promotions) :** Séparation du "catalogue" (`formations`) et de la "cohorte" (`sessions`). Ajout crucial pour permettre le filtrage des Alumni par année de promotion.
+- **Table `secteurs_greta` :** Création d'une table de référence pour normaliser les secteurs d'activité, évitant les doublons syntaxiques et fiabilisant les futurs menus déroulants.
+- **Standardisation du Naming :** Application stricte des conventions de nommage SQL (`snake_case`, noms de tables au pluriel) pour le futur backend PHP.
+- **Optimisation de l'UI :** Déplacement de la clé étrangère `statut_id` (badge "En poste") directement dans la table `utilisateurs` pour éviter une jointure SQL lourde lors de l'affichage de la grille de l'annuaire.
+
+### Choix Techniques & "Scoping" (Périmètre)
+
+- **Exclusion de la table `competences` :** Décision métier assumée et validée. La disparité extrême des filières du réseau rendrait le maintien d'un dictionnaire de compétences ingérable. L'expression des acquis se fera via un champ texte libre (`description`), allégeant considérablement la base.
+
+---
+
+# DEUXIEME SEMAINE
+
+## Séance du Lundi 23 Mars (Matin)
+
+## 1. Fondations et Variables (Styles Globaux)
+
+Nous avons mis en place le "thème" technique pour éviter toute "bidouille" de couleur lors de l'intégration CSS.
+
+### 1.1 Couleurs Institutionnelles (DSFR)
+
+Blue-France (Base) : #000091 (Identité républicaine).
+
+Blue-France-Hover : #1212BA (Plus sombre pour simuler la pression au survol).
+
+Blue-France-Active : #2727D5 (Plus vibrant pour le clic réel).
+
+### 1.2 États de Surface et Neutres
+
+Bg-disable : #EEEEEE (Gris très clair pour les fonds désactivés).
+
+Gris-disable-text : #929292 (Gris moyen pour le texte des éléments verrouillés).
+
+Border-Default : #E5E5E5 (Bordures légères pour les inputs et séparateurs).
+
+## 2. Atomes : Les Composants Maîtres
+
+Chaque composant a été pensé comme un objet de programmation avec des propriétés spécifiques.
+
+### 2.1 Le Bouton "Couteau Suisse"
+
+Variantes d'états : Default, Hover, Active, Disabled.
+
+Propriétés Booleans : Création d'interrupteurs Show Icon Left et Show Icon Right pour gérer l'affichage des icônes sans créer de nouveaux composants.
+
+Logique de Redimensionnement : Utilisation du mode Hug contents (le bouton s'adapte à la taille du texte) pour éviter les cadres fixes inutiles.
+
+### 2.2 L'Input (Champ de saisie)
+
+Structure Auto Layout : Empilement vertical [Label] + [Champ de texte] + [Message d'erreur].
+
+États Critiques : \* Focus : Bordure bleue de 2px (Accessibilité).
+
+Error : Bordure rouge #CE0500 + texte d'aide rouge.
+
+## 3. Organismes : Navigation et Header
+
+Passage de l'unité isolée à la structure de page.
+
+### 3.1 Header Responsive
+
+Mode d'espacement : Utilisation du Gap: Auto (Space-between) pour séparer le logo à gauche, la nav au centre et l'action à droite.
+
+Multi-supports : \* Desktop : Menu textuel visible.
+
+Mobile/Tablette : Remplacement du menu par une icône Burger.
+
+### 3.2 Navigation Mobile (Burger Menu)
+
+Réflexion sur la profondeur : Ajout d'une Ombre Portée (Drop Shadow) légère sur le menu déroulant (Y: 8, Blur: 20, Opacity: 10%) pour marquer la superposition visuelle.
+
+## 4. Méthodologie et Références
+
+Réflexions de "Lead Developpeur" appliquées au design.
+
+Suppression des cadres fixes : Abandon des tailles rigides pour privilégier la flexibilité (préparation au Flexbox CSS).
+
+Correction des Contrastes : Rectification de l'état Hover (plus sombre et non plus clair) pour respecter les normes d'ergonomie.
+
+Références utilisées :
+
+DSFR : Système de Design de l'État.
+
+Système de grille : Utilisation de l'unité v (multiples de 8px) pour la cohérence spatiale.
