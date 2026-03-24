@@ -333,3 +333,34 @@ Respect strict des normes obligatoires du Design System de l'État (RGAA / DSFR)
 Conception du Footer DSFR : Création d'un Master Component pensé en blocs (divs `Footer_Top` et `Footer_Bottom`) pour calquer la future intégration HTML/CSS.
 
 Intégration des obligations légales : Ajout de la bordure signature `Blue-France`, des liens institutionnels obligatoires, des pages légales et de la licence Etalab-2.0.
+
+
+## Session du 24 Mars 2026 - Matinée
+
+### Modifications Structurelles (Design System)
+- Configuration de la grille : 12 colonnes, type Center, largeur 1224px, gouttière 24px.
+- Création des tokens d'espacement manquants :
+    - Spacing 8w : 64px (Séparation des sections).
+    - Spacing 10w : 80px (Marges hautes et basses de page).
+- Uniformisation des espacements verticaux sur une base multiple de 8px (Unité w).
+
+### Page Annuaire
+- Remplacement de la pagination complexe par un bouton secondaire "Voir plus".
+- Alignement du footer et du header sur les limites de la grille 12 colonnes.
+- Correction des marges internes des cartes pour respecter le rythme vertical.
+
+### Page Profil (MVP)
+- Création du layout principal en deux colonnes (Ratio 8/4).
+- Section Identité : Avatar 160px chevauchant la bannière 240px.
+- Section Présentation : Utilisation d'un bloc de texte simple (8 colonnes) pour la biographie.
+- Section Parcours : Fusion des expériences professionnelles et des formations en un bloc unique.
+- Sidebar de contact : Création d'un conteneur gris avec padding de 24px pour regrouper les informations de contact, localisation et mobilité.
+
+### Composants et Propriétés
+- Refonte du composant Tag :
+    - Propriété "Statut" : En poste, En recherche, Indisponible.
+    - Propriété "Icône" : Booléen (True/False).
+- Objectif : Faire correspondre les variants Figma aux futures Props des composants front-end.
+
+### Décisions Techniques (Back-End / BDD)
+- Utilisation d'un champ texte long pour la biographie et le parcours afin de rester inclusif pour tous les types de formations du Greta.
