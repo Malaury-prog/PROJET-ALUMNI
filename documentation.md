@@ -364,3 +364,33 @@ Intégration des obligations légales : Ajout de la bordure signature `Blue-Fran
 
 ### Décisions Techniques (Back-End / BDD)
 - Utilisation d'un champ texte long pour la biographie et le parcours afin de rester inclusif pour tous les types de formations du Greta.
+
+
+
+
+## Session du 24 Mars 2026 - Après-midi
+
+### Architecture et BDD
+- Analyse du schéma BDD-V3 et identification des champs nécessaires au MVP.
+- Ajout théorique des colonnes suivantes à la table `utilisateurs` :
+    - `description` (TEXT)
+    - `titre_poste` (VARCHAR)
+    - `has_permis` (BOOLEAN)
+    - `consentement_rgpd` (BOOLEAN)
+
+### Page Formulaire (Formulaire_page)
+- Layout : Conteneur central de 8 colonnes avec Auto Layout vertical.
+- Section 1 (Identité) : Champs Nom/Prénom en Fill Container (4 colonnes chacun) + Rangée de 5 avatars illustratifs prédéfinis.
+- Section 2 (Parcours) : Menus déroulants pour la sélection de la formation, de la ville et de la promotion.
+- Section 3 (Situation) : Champs de saisie pour le poste actuel et l'entreprise actuelle.
+- Finalisation : Intégration du composant Checkbox (Consentement) et du bouton "Envoyer le formulaire" (Bouton Primaire).
+
+### UI/UX Updates
+- Amélioration de la densité visuelle par l'augmentation des espacements (Gaps 8w/10w).
+- Allègement des séparateurs de section (Gris clair) pour une lecture plus fluide.
+- Alignement strict sur la grille de 12 colonnes du projet.
+
+### Composants et Statuts (Update)
+- Mise à jour du composant Tag : Ajout du variant "En formation" (Couleur suggérée : Bleu DSFR ou Violet).
+- Objectif : Permettre un filtrage précis dans l'annuaire entre les profils en poste, en recherche et les stagiaires actuels du Greta.
+- Mapping BDD : Correspondance directe avec la table de référence `statuts`.
