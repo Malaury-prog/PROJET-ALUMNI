@@ -425,3 +425,35 @@ Intégration des obligations légales : Ajout de la bordure signature `Blue-Fran
 - Terminer l'intégration visuelle des onglets "Ma formation" et "Ma situation".
 - Préparer le script SQL pour l'import dans PHPMyAdmin (via VM Yunohost).
 - **Objectif 27 Mars :** Présentation du prototype design + structure BDD validée.
+
+## Journal de Bord - 25 Mars 2026 (Clôture de Session nuit)
+
+
+### 🏁 État d'avancement
+- **UI Design :** Landing Page et Annuaire terminés (Desktop/Mobile).
+- **UX Profil :** Système à 3 onglets finalisé et validé sur la logique BDD.
+- **Recherche Utilisateur :** 1h de test auprès d'une classe de BTS (données collectées).
+- **Identification des manques :** Pages de connexion, de sécurité (reset password) et d'erreur 404 listées pour production immédiate.
+
+
+### Roadmap de Demain (Jeudi 26/03)
+
+#### 1. Finitions Figma & Mobile (Matinée)
+- [ ] **Quick-Win Frames (Priorité) :** Créer les pages de Connexion (Login), de changement de mot de passe obligatoire (Première connexion) et la page Erreur 404.
+- [ ] **Composants Mobiles :** Créer le Footer responsive et la barre de filtres/résultats.
+- [ ] **Section Entreprise :** Ajouter le bloc "Expérience / Stage" dans l'onglet Situation + version mobile.
+- [ ] **Responsive Forms :** Stack vertical de tous les champs des 3 onglets.
+- [ ] **Audit QA :** Vérification des marges et alignements sur l'ensemble des frames.
+
+#### 2. Audit de Cohérence BDD (Début d'après-midi)
+- [ ] **Mapping Frame vs Table :** Pointer chaque input Figma vers sa colonne SQL correspondante.
+- [ ] **Logique métier (PHP/JS) :** - Gestion du `first_login` (Flag BDD pour forcer la redirection vers la page de changement de mot de passe).
+    - Event listener JS (`beforeunload`) pour prévenir l'utilisateur avant de quitter un formulaire non enregistré.
+    - Champs "Hidden" (Token de session, ID utilisateur).
+
+#### 3. Manipulation SQL (Après-midi)
+- [ ] Création/Mise à jour des tables sur PHPMyAdmin.
+- [ ] Insertion des premières données réelles collectées auprès des BTS.
+
+### 📅 Objectif Week-end
+- **Lancement de l'intégration :** Passage du design au code (HTML/CSS/React).
