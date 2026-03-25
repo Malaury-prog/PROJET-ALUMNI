@@ -394,3 +394,34 @@ Intégration des obligations légales : Ajout de la bordure signature `Blue-Fran
 - Mise à jour du composant Tag : Ajout du variant "En formation" (Couleur suggérée : Bleu DSFR ou Violet).
 - Objectif : Permettre un filtrage précis dans l'annuaire entre les profils en poste, en recherche et les stagiaires actuels du Greta.
 - Mapping BDD : Correspondance directe avec la table de référence `statuts`.
+
+
+## Journal de Bord - Journée du 25 Mars 2026
+
+### 🎯 Objectifs du jour
+- Finalisation du Dashboard Admin.
+- Validation des parcours utilisateurs sur le formulaire de profil.
+- Récupération de données réelles pour le MVP.
+
+### 🚀 Phase de Recherche Utilisateur (User Research)
+- **Présentation (1h) :** Intervention devant une classe de BTS pour présenter le prototype.
+- **Collecte de données :** Récupération de données réelles (noms, prénoms, photos d'avatars) pour tester l'intégration et la pertinence des champs.
+- **Feedback :** Validation de l'intérêt des élèves pour l'outil de mise en relation.
+
+### ⚠️ Pivots et Défis Techniques
+- **Recadrage Tuteur :** Nécessité de lier plus explicitement les entreprises au profil (stages/emplois).
+- **Simplification BDD :** Suppression du champ `has_permis` (hors périmètre MVP).
+- **Refonte UI Formulaire :** Passage d'un formulaire vertical long à un système de **3 onglets** pour une meilleure expérience utilisateur et une cohérence BDD :
+    1. **Mon profil** (Table `utilisateurs`) : Identité et Bio.
+    2. **Ma formation** (Table `parcours`) : Historique GRETA et sessions.
+    3. **Ma situation** (Table `entreprises` / `statut`) : Poste actuel et employeur.
+
+### 🛠️ Décisions Design & UX
+- **Intégrité des données :** Utilisation systématique de menus déroulants (`Select`) pour les villes, formations et sessions afin d'éviter les doublons de saisie (ex: "TPdev" vs "TP_dev").
+- **Gestion Avatars :** Implémentation d'un système hybride (Upload de photo OU Pop-up de sélection parmi 6 avatars illustrés).
+
+
+### 📅 Prochaines étapes
+- Terminer l'intégration visuelle des onglets "Ma formation" et "Ma situation".
+- Préparer le script SQL pour l'import dans PHPMyAdmin (via VM Yunohost).
+- **Objectif 27 Mars :** Présentation du prototype design + structure BDD validée.
