@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Marianne";
+  src: url("./assets/fonts/Marianne-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Marianne";
+  src: url("./assets/fonts/Marianne-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@theme {
+  --font-marianne: "Marianne", sans-serif;
+
+  /* Palette de Bleus */
+  --color-blue-france: #000091;
+  --color-blue-france-hover: #1212ba;
+  --color-blue-france-active: #2727d5;
+
+  /* Accents */
+  --color-red-greta: #e1000f;
+  --color-accent-orange: #fd7e14;
+
+  /* Typographie */
+  --color-text-main: #161616;
+  --color-text-secondary: #666666;
+  --color-gris-disable-text: #929292;
+
+  /* Backgrounds */
+  --color-bg-default: #ffffff;
+  --color-bg-alt: #f6f6f6;
+  --color-bg-disable: #eeeeee;
+
+  /* États et Bordures */
+  --color-border-default: #e5e5e5;
+  --color-success-green: #18753c;
+  --color-error-red: #ce0500;
+
+  /* Bordures */
+  --border-width-1: 1px;
+  --border-width-2: 0px;
+
+  /* Espacements Verticaux (v) */
+  --spacing-1v: 4px;
+  --spacing-2v: 8px;
+  --spacing-3v: 12px;
+  --spacing-4v: 16px;
+  --spacing-5v: 20px;
+  --spacing-6v: 24px;
+  --spacing-7v: 28px;
+  --spacing-8v: 32px;
+  --spacing-9v: 36px;
+  --spacing-10v: 40px;
+  --spacing-12v: 48px;
+
+  /* Espacements Horizontaux / Largeurs (w) */
+  --spacing-1w: 8px;
+  --spacing-2w: 16px;
+  --spacing-3w: 24px;
+  --spacing-4w: 32px;
+  --spacing-6w: 48px;
+  --spacing-8w: 64px;
+  --spacing-10w: 80px;
+
+  /* --- RADIUS (Arrondis) --- */
+  --radius-none: 0;
+  --radius-default: 4px;
+  --radius-small: 8px;
+  --radius-medium: 12px;
+  --radius-large: 16px;
+
+  /* --- TYPOGRAPHIE (Desktop par défaut) --- */
+  --text-h1: 40px;
+  --text-h2: 32px;
+  --text-h3: 28px;
+  --text-h4: 24px;
+  --text-body: 16px;
+  --text-small: 14px;
+
+  /* --- WEIGHT ---*/
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+}

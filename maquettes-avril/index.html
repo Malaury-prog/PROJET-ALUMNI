@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annuaire Alumni - GRETA Sud Champagne</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#hero">Accueil</a></li>
+          <li><a href="#vision">Publics</a></li>
+          <li><a href="#missions">Missions</a></li>
+          <li><a href="#interface">Desktop</a></li>
+          <li><a href="#mobilite">Mobile</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO SECTION -->
+      <section id="hero" class="hero">
+        <div class="glass-card">
+          <p class="overline">Projet de fin de formation</p>
+          <h1>Plateforme Alumni GRETA Sud Champagne</h1>
+          <p class="highlight">Maintenir le lien, bâtir l'avenir.</p>
+          <p class="description">
+            Un espace dédié à la réussite et au rayonnement de notre communauté
+            !
+          </p>
+        </div>
+      </section>
+
+      <!-- VISION -->
+      <section id="vision" class="centered-section">
+        <h2>Un outil au service de tous !</h2>
+        <p>Le projet ALUMNI est un annuaire mis </p>
+        <div class="glass-list-container">
+          <ul class="glass-list">
+            <li><span class="weight-bold">Les apprenants</span></li>
+            <li><span class="weight-bold">Les Alumni</span></li>
+            <li><span class="weight-bold">L'administration</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- MISSIONS -->
+      <section id="missions" class="centered-section bg-light">
+        <h2>Nos ambitions pour le réseau</h2>
+        <div class="content-block">
+          <p>
+            <span class="color-accent weight-bold">Fédérer :</span> Créer un
+            annuaire dynamique et interactif.
+          </p>
+          <p>
+            <span class="color-accent weight-bold">Accompagner :</span>
+            Faciliter la mise en relation au sein de notre territoire.
+          </p>
+          <p>
+            <span class="color-accent weight-bold">Rayonner :</span> Valoriser
+            les talents formés au sein de nos territoires.
+          </p>
+        </div>
+      </section>
+
+      <!-- INTERFACE DESKTOP -->
+      <section id="interface" class="centered-section">
+        <h2>Une navigation intuitive et moderne !</h2>
+        <p class="centered-p">
+          Une interface épurée utilisant les codes du Glassmorphism pour une
+          lisibilité optimale.
+        </p>
+
+        <div class="carousel-container desktop-carousel">
+          <button
+            class="nav-btn prev"
+            aria-label="Précédent"
+            onclick="moveSlide('desktop-carousel', -1)"
+          >
+            &#10094;
+          </button>
+          <div class="carousel-window">
+            <div class="carousel-track">
+              <img
+                src="./src/images/dekstop/Annuaire_page.png"
+                alt="Vue Desktop Annuaire"
+                onclick="zoomImage(this)"
+              />
+              <img
+                src="./src/images/dekstop/Landing_page.png"
+                alt="Vue Desktop Landing"
+                onclick="zoomImage(this)"
+              />
+              <img
+                src="./src/images/dekstop/Profil_page.png"
+                alt="Vue Desktop Profil"
+                onclick="zoomImage(this)"
+              />
+            </div>
+          </div>
+          <button
+            class="nav-btn next"
+            aria-label="Suivant"
+            onclick="moveSlide('desktop-carousel', 1)"
+          >
+            &#10095;
+          </button>
+        </div>
+      </section>
+
+      <!-- MOBILITÉ MOBILE -->
+      <section id="mobilite" class="centered-section bg-light">
+        <h2>L'accès au réseau, partout et tout le temps !</h2>
+        <p class="centered-p">
+          Pensée en Mobile-First, la plateforme offre une fluidité totale sur
+          smartphone.
+        </p>
+
+        <div class="carousel-container mobile-carousel">
+          <button
+            class="nav-btn prev"
+            aria-label="Précédent"
+            onclick="moveSlide('mobile-carousel', -1)"
+          >
+            &#10094;
+          </button>
+          <div class="carousel-window mobile-window">
+            <div class="carousel-track">
+              <img
+                src="./src/images/mobile/Annuaire_page_mobile.png"
+                alt="Vue Mobile Annuaire"
+                onclick="zoomImage(this)"
+              />
+              <img
+                src="./src/images/mobile/Landing_page_mobile.png"
+                alt="Vue Mobile Landing"
+                onclick="zoomImage(this)"
+              />
+              <img
+                src="./src/images/mobile/Profil_page_mobile.png"
+                alt="Vue Mobile Profil"
+                onclick="zoomImage(this)"
+              />
+            </div>
+          </div>
+          <button
+            class="nav-btn next"
+            aria-label="Suivant"
+            onclick="moveSlide('mobile-carousel', 1)"
+          >
+            &#10095;
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <!-- MODAL DE ZOOM -->
+    <div id="zoomModal" class="modal" onclick="closeZoom()">
+      <span class="close" aria-label="Fermer">&times;</span>
+      <img class="modal-content" id="imgZoomed" alt="Aperçu agrandi" />
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

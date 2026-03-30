@@ -223,46 +223,48 @@ Révision des indicateurs de performance pour le maquettage :
 
 - Lancement de l'intégration HTML/CSS/React.
 
-
 ## Journal de Bord - Jeudi 26 Mars 2026 (Après-midi)
 
-### 🛡️ Conformité & Données Réelles (RGPD)
+### Conformité & Données Réelles (RGPD)
+
 - **Collecte Validée :** Présentation du projet à la classe de BTS et signature du formulaire de consentement éclairé.
 - **Privacy by Design :** Validation du modèle de données incluant la distinction entre l'usage "Prototype/Examen" et "Déploiement/Production".
 - **Data Audit :** Récupération des 9 points de données (Identité, Contact, Ville, Stage, LinkedIn, etc.) en respectant le droit à l'image (option avatar).
 
-### 🏗️ Infrastructure & Auto-Hébergement
+### Infrastructure & Auto-Hébergement
+
 - **Setup Serveur Local :** Étude et préparation de l'installation d'un serveur domestique sur une tour PC dédiée.
 - **Solution Logicielle :** Configuration prévue sous **YunoHost** pour faciliter l'auto-hébergement, la gestion des mails et la sécurisation SSL (Let's Encrypt).
 - **Compétences SysAdmin :** Apprentissage des bases de l'administration serveur, de l'ouverture des ports et de la gestion d'un environnement de production "at home".
 
-### 📧 Communication Stratégique
+### Communication Stratégique
+
 - **Audit Technique :** Envoi du questionnaire à l'informaticien référent du GRETA (Compatibilité PHP 8.5, protocoles de sauvegarde, accès SSH).
 - **Qualité & Accessibilité :** Envoi des préconisations à la Responsable Qualité (Respect du DSFR, accessibilité RGAA et processus de modération).
 
-### 🎯 État d'avancement Global
+### État d'avancement Global
+
 - [x] Formulaire RGPD rédigé et signé.
 - [x] Stratégie d'hébergement définie (YunoHost).
 - [x] Architecture BDD mise à jour avec les colonnes de consentement.
 - [ ] À venir : Finalisation des frames mobiles "Tokenized".
 - [ ] À venir : Conception du Dashboard Admin (Modération).
 
-
-
 ## Phase de Validation et Tests (Post-Déploiement)
-
 
 # Journal d'Installation du Serveur de Développement - Malaury
 
 Ce document retrace la configuration complète d'un serveur YunoHost sur une tour dédiée, utilisé comme environnement "Sandbox" pour l'apprentissage du développement Web / Web Mobile.
 
 ## 1. Identification de l'Infrastructure Réseau
+
 Avant l'installation, les adresses IP ont été identifiées pour éviter les conflits.
 
 - **Machine Cliente (PC Portable) :** Adresse IP locale identifiée via `ipconfig`.
 - **Machine Serveur (Tour) :** Attribution d'une IP locale statique pour garantir la persistance des accès (ex: `xxx.xxx.x.x`).
 
 ## 2. Configuration Réseau du Serveur
+
 Le paramétrage manuel a été privilégié pour stabiliser l'environnement Full Stack.
 
 - **Masque de sous-réseau :** `255.255.255.0` (Classe C standard).
@@ -270,16 +272,18 @@ Le paramétrage manuel a été privilégié pour stabiliser l'environnement Full
 - **Serveurs de noms (DNS) :**
   - Primaire : `1.1.1.1` (Cloudflare)
   - Secondaire : `80.67.169.12` (FDN)
-  *Justification : Rapidité de résolution et neutralité du réseau.*
+    _Justification : Rapidité de résolution et neutralité du réseau._
 
 ## 3. Stratégie de Partitionnement et Boot
+
 L'installation a été réalisée sur un disque NVMe avec une table de partitionnement GPT.
 
-- **Partition 1 (ESP) :** Gestion de l'amorçage EFI. *Note : Une erreur initiale a été rencontrée puis résolue lors de la finalisation du partitionnement.*
+- **Partition 1 (ESP) :** Gestion de l'amorçage EFI. _Note : Une erreur initiale a été rencontrée puis résolue lors de la finalisation du partitionnement._
 - **Partition 2 (Root /) :** Système de fichiers en `ext4` pour l'OS et les applications.
 - **Partition 3 (Swap) :** Mémoire virtuelle de secours.
 
 ## 4. Configuration du Domaine et DNS Local
+
 Choix d'une stratégie de "Sandbox" isolée d'Internet pour les phases de test.
 
 - **Domaine choisi :** Domaine local (ex: `serveur-dev.local`).
@@ -287,19 +291,23 @@ Choix d'une stratégie de "Sandbox" isolée d'Internet pour les phases de test.
 - **Sécurité :** Accès HTTPS via certificat auto-signé (acceptation manuelle des alertes de sécurité pour le développement local).
 
 ## 5. Stack Technique et Outils de Développement
+
 Le serveur est désormais équipé des briques logicielles fondamentales.
 
 ### Gestion de Base de Données : phpMyAdmin
+
 - **Moteur :** MariaDB.
 - **Usage :** Visualisation des données, création de schémas SQL et tests de requêtes.
 - **Accès :** Sécurisé via le portail d'authentification unique (SSO).
 
 ### Environnement de Code : Custom Webapp
+
 - **Serveur Web :** Nginx.
 - **Runtime :** PHP-FPM.
 - **Permissions :** Accès configuré sur "Visiteurs" (Public sur le LAN) pour faciliter les tests multi-appareils sans contrainte de login SSO systématique.
 
 ## 6. Prochaines Étapes de Développement
+
 - [ ] Configurer l'extension **Remote - SSH** sur VS Code pour coder directement sur la tour.
 - [ ] Initialiser un premier dépôt Git dans le dossier `/var/www/my_webapp`.
 - [ ] Tester la connexion PDO entre la Webapp et la base de données MariaDB.
@@ -307,19 +315,127 @@ Le serveur est désormais équipé des briques logicielles fondamentales.
 Conformément au protocole de test, les points suivants ont été vérifiés sur l'environnement local.
 
 ### 1. Accessibilité des Services
+
 - **Portail Utilisateur :** Opérationnel.
 - **Lien Webapp :** Testé et accessible via `https://[domaine].local/my_webapp`.
 - **Lien Base de Données :** Interface phpMyAdmin accessible.
 
 ### 2. Connectivité SFTP (Transfert de fichiers)
+
 - **Client utilisé :** FileZilla.
 - **Protocole :** SFTP (SSH File Transfer Protocol) sur le port 22.
 - **Statut :** Connexion établie avec l'utilisateur `admin`. Accès en écriture vérifié dans le répertoire `/var/www/my_webapp/www/`.
 - **Vérification :** Capacité à téléverser des scripts PHP et des assets (images/CSS) sur le serveur.
 
 ### 3. Intégrité du Serveur de Base de Données
+
 - **Système :** MariaDB.
 - **Outil de gestion :** phpMyAdmin.
 - **Validation :** Authentification réussie. La base de données dédiée à la Webapp est présente et manipulable (Privilèges vérifiés).
 
 > **Conclusion de l'étape :** L'environnement Full Stack est prêt pour le développement. Le cycle "Code (VS Code) -> Transfert (SFTP) -> Visualisation (Navigateur) -> Gestion Data (phpMyAdmin)" est validé.
+
+## Récapitulatif de session - 27/03/2026
+
+### Architecture Technique & Développement
+
+- **Structure HTML :** Implémentation d'une Landing Page sémantique avec navigation par ancres.
+- **CSS Moderne :** Utilisation des variables :root et du Nesting natif pour une maintenabilité optimisée.
+- **Composants :** Création d'un header persistant (Sticky) et de carrousels interactifs.
+- **Interactivité :** Système de zoom modal (Lightbox) pour l'examen détaillé des assets Figma.
+
+### Design System & Spacing (Pixel Perfect)
+
+- **Grille Desktop (1440px) :** 12 colonnes, marges de 120px, gouttières de 24px.
+- **Grille Mobile (375px) :** 4 colonnes, marges de 24px, gouttières de 16px.
+- **Unités DSFR :** Adoption du pas de 4px (v) pour l'ensemble des marges (V) et paddings (W).
+- **Contraste :** Validation des couleurs pour la conformité AA du RGAA.
+
+### Préparation Jury & Posture
+
+- Justification de la séparation entre l'UI de présentation (créativité) et l'UI produit (rigueur institutionnelle).
+- Maîtrise du vocabulaire technique : interopérabilité, éco-conception et sémantique.
+
+## Journal de Bord - Lundi 30 Mars 2026
+
+## Architecture du Projet - Validation 30/03/2026
+
+### Organisation des Dossiers
+
+- **maquettes-avril :** Stockage du prototype statique HTML/CSS/JS (Livrable intermédiaire du 10 avril).
+- **Ressources/conception :** Assets de design (Figma) et modélisation de données (MCD/Merise).
+- **Ressources/references :** Documentation théorique et supports de cours liés à la structure MLD.
+
+### Standardisation & Nomenclature
+
+- Utilisation de termes anglais standards pour les dossiers techniques (`desktop`, `mobile`, `bg`).
+
+### Note Pédagogique (Jury Juin)
+
+"L'organisation monorepo adoptée ici permet de conserver l'historique complet du projet. On distingue nettement la phase de **Conception** (Ressources), la phase de **Prototypage** (Maquettes) et, prochainement, la phase de **Développement Industriel** (Client/Server). C'est une structure scalable qui minimise les erreurs de chemins d'accès et facilite le déploiement."
+
+## Architecture de Sécurité : Le répertoire Public
+
+### Implémentation du Web Root
+- **Dossier /public :** Désigné comme l'unique racine web du serveur Backend.
+- **index.php :** Mise en place d'un Front Controller servant de point d'entrée unique pour toutes les requêtes HTTP.
+
+### Isolation des Composants Sensibles
+- **Principe de moindre exposition :** En isolant le code métier (`src/`), les dépendances (`vendor/`) et la configuration (`.env`) en dehors du dossier public, on élimine les risques d'accès direct aux fichiers sensibles par URL.
+
+### Note Pédagogique (Jury Juin)
+"Le choix d'un dossier /public séparé est une norme de sécurité de l'industrie (standard sur Symfony ou Laravel). Cela garantit que si un utilisateur tente d'accéder à l'adresse `monsite.fr/.env`, il recevra une erreur 404 car le serveur ne connaît que le contenu du dossier public. C'est une protection proactive contre les cyberattaques de type 'Directory Traversal'."
+
+## Stratégie d'Intégration et Design System
+
+### Architecture des Composants
+- **Modularité :** Adoption d'une structure orientée composants (`/src/components`).
+- **Découplage :** Le fichier `App.jsx` sert de conteneur principal (Layout), tandis que les composants gèrent leur propre logique visuelle.
+
+### Identité Visuelle (Typographie & Couleurs)
+- **Variables CSS :** Centralisation des tokens de design dans le bloc `@theme` de Tailwind v4 pour une maintenance simplifiée.
+
+### Note Pédagogique (Jury Juin)
+"L'intégration ne se limite pas à reproduire un visuel, c'est la mise en place d'un système. En utilisant les variables CSS au sein du thème Tailwind v4, je crée un 'Single Source of Truth' (Source unique de vérité). Si la charte graphique de l'Alumni GRETA évolue, je ne modifie qu'une seule ligne de code pour mettre à jour l'ensemble de l'application. C'est une preuve de scalabilité."
+
+---
+
+## Organisation Structurelle & Identité Visuelle
+
+### Architecture des Dossiers
+- **src/pages/ :** Regroupement des vues principales pour une gestion optimisée du React Router.
+- **src/components/ :** Bibliothèque de composants atomiques et modulaires.
+- **src/assets/fonts/ :** Stockage local des polices de caractères pour garantir l'affichage multi-support.
+
+### Typographie Officielle
+- **Font :** Marianne (Police officielle du Système de Design de l'État - DSFR).
+- **Méthode d'import :** Utilisation de la règle `@font-face` pour l'auto-hébergement, évitant ainsi la dépendance à des CDN externes et renforçant la confidentialité des données.
+
+### Note Pédagogique (Jury Juin)
+"L'utilisation de la police Marianne n'est pas qu'un choix esthétique, c'est une mise en conformité avec le **DSFR (Design System de l'État Français)**. Techniquement, l'auto-hébergement des polices améliore les performances (réduction du temps de latence DNS) et assure que le design reste identique, quel que soit l'appareil utilisé par le jury."
+
+---
+
+## Architecture de Navigation & Design Tokens
+
+### Routage Applicatif
+- **Bibliothèque :** `react-router-dom` v6+.
+- **Concept :** Mise en place d'un système de navigation côté client (Client-Side Routing) pour une expérience utilisateur fluide (SPA).
+
+### Systématisation du Design (Tokens)
+- **Typographie :** Importation de la police Marianne (DSFR) et liaison avec le moteur Tailwind v4 via les variables CSS.
+- **Couleurs :** Définition des constantes chromatiques (Bleu France, Or Luxury) extraites de la maquette Figma.
+- **Unités :** Utilisation de l'échelle de 4px standard de Tailwind pour assurer la cohérence des marges et paddings.
+
+### Note Pédagogique (Jury Juin)
+"La mise en place de Design Tokens avant l'intégration permet de garantir l'homogénéité visuelle. Si le design système évolue, je ne modifie que les variables dans le bloc `@theme`. Concernant le routage, l'utilisation de React Router démontre ma compréhension des Single Page Applications : l'application ne recharge pas la page entière, elle 'swappe' dynamiquement les composants selon l'URL, optimisant ainsi les performances réseau et le confort de navigation."
+
+## Typographie Responsive & Système de Radius
+
+### Implémentation technique
+- **Adaptabilité :** Double déclaration des échelles de texte (Desktop vs Mobile) pour garantir une lisibilité optimale sur tous les terminaux.
+- **Radius Harmonique :** Utilisation d'une échelle d'arrondis progressive (4px à 16px) pour adoucir l'interface tout en restant dans les standards du DSFR.
+- **Unités :** Conversion des valeurs Figma en pixels fixes dans le thème pour une fidélité 1:1.
+
+### Note Pédagogique (Jury Juin)
+"La gestion de la typographie responsive est un enjeu majeur d'accessibilité. En isolant les tailles de texte pour le mobile et le desktop dès la configuration du thème, je m'assure que l'expérience utilisateur reste cohérente sans effort supplémentaire lors de l'intégration. De plus, le système de 'Radius' permet de hiérarchiser les éléments : un petit arrondi pour les boutons, un plus grand pour les cartes de profil Alumni, créant ainsi une structure visuelle intuitive."
