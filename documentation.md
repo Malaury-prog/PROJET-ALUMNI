@@ -439,3 +439,37 @@ Conformément au protocole de test, les points suivants ont été vérifiés sur
 
 ### Note Pédagogique (Jury Juin)
 "La gestion de la typographie responsive est un enjeu majeur d'accessibilité. En isolant les tailles de texte pour le mobile et le desktop dès la configuration du thème, je m'assure que l'expérience utilisateur reste cohérente sans effort supplémentaire lors de l'intégration. De plus, le système de 'Radius' permet de hiérarchiser les éléments : un petit arrondi pour les boutons, un plus grand pour les cartes de profil Alumni, créant ainsi une structure visuelle intuitive."
+
+## Comprendre le passage du HTML au JSX
+### Pourquoi le JSX ?
+- **Nature du JSX :** Ce n'est pas du HTML, mais une extension syntaxique du JavaScript. 
+- **Rôle :** Il permet de décrire ce que l'interface utilisateur (UI) doit devenir. React se charge ensuite de transformer ce code en véritables balises DOM pour le navigateur.
+
+### Logique de Décomposition
+- **Le Composant :** C'est une fonction qui retourne un élément visuel.
+- **Les Props :** Ce sont des paramètres que l'on passe au composant pour le personnaliser (ex: changer le texte du bouton).
+- **Le Style :** Utilisation de constantes de texte pour stocker les classes Tailwind, ce qui rend le code plus lisible et facile à maintenir.
+
+
+## Architecture Avancée : Composants à Variants
+
+### Concept des Variants
+- **Définition :** Utilisation d'un objet JavaScript servant de "dictionnaire" de styles.
+- **Fonctionnement :** La prop `variant` sert de clé pour extraire dynamiquement les classes CSS Tailwind correspondantes.
+- **Avantage :** Centralisation totale du design. Une modification dans le dictionnaire impacte tous les boutons du site instantanément.
+
+### Analyse du code (Button.jsx)
+1. **baseStyles :** Stocke les propriétés immuables (padding, police, bordures).
+2. **stylesParCouleur :** Mappe les intentions (primary, danger) aux codes couleurs du Design System (Bleu-France, Rouge-Greta).
+3. **Template Literal :** L'expression `${...}` permet de fusionner proprement les chaînes de caractères de styles.
+
+## 📁 Nomenclature et Organisation des Ressources (Assets)
+
+### 📋 Architecture du répertoire /assets
+- **Classification par type :** Séparation stricte entre les polices (`fonts`), les éléments iconographiques (`icons`) et les médias visuels (`images`).
+- **Sous-catégorisation :** Utilisation de répertoires dédiés pour les logos et les fonds de page (`backgrounds`) afin d'optimiser la gestion des ressources graphiques.
+
+### 🔧 Logique de maintenance
+- **Uniformisation :** Tous les médias sont centralisés dans `src/assets` pour bénéficier de la compilation et de l'optimisation par le bundler (Vite).
+- **Évolutivité :** Cette structure permet d'ajouter de nouvelles catégories (ex: `videos` ou `json`) sans perturber l'arborescence existante.
+
