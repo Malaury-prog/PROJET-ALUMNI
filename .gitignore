@@ -10,3 +10,7 @@ client/dist/
 # Fichiers système
 .DS_Store
 Thumbs.db
+
+client/.env
+server/.env
+.env
