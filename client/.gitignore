@@ -22,3 +22,16 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# On ignore les dépendances PHP
+server/vendor/
+server/.env
+
+# On ignore les dépendances React
+client/node_modules/
+client/.env
+client/dist/
+
+# On ignore les fichiers systèmes
+.DS_Store
+Thumbs.db
