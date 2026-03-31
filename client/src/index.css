@@ -29,7 +29,7 @@
   /* Typographie */
   --color-text-main: #161616;
   --color-text-secondary: #666666;
-  --color-gris-disable-text: #929292;
+  --color-text-disabled: #929292;
 
   /* Backgrounds */
   --color-bg-default: #ffffff;
@@ -43,7 +43,7 @@
 
   /* Bordures */
   --border-width-1: 1px;
-  --border-width-2: 0px;
+  --border-width-2: 2px;
 
   /* Espacements Verticaux (v) */
   --spacing-1v: 4px;

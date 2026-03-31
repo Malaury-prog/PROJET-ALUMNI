@@ -31,3 +31,4 @@ const Button = ({ label, onClick, variant = "primary", disabled = false }) => {
 };
 
 export default Button;
+
