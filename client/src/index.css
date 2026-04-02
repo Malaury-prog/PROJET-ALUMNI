@@ -74,15 +74,24 @@
   --radius-medium: 12px;
   --radius-large: 16px;
 
-  /* --- TYPOGRAPHIE (Desktop par défaut) --- */
-  --text-h1: 40px;
-  --text-h2: 32px;
-  --text-h3: 28px;
-  --text-h4: 24px;
+  /* --- TYPOGRAPHIE --- */
+  /* Mobile par défaut */
+  --text-h1: 32px;
+  --text-h2: 28px;
+  --text-h3: 24px;
+  --text-h4: 22px;
   --text-body: 16px;
   --text-small: 14px;
+
+  /* --- TYPOGRAPHIE DESKTOP --- */
+  --text-h1-desktop: 40px;
+  --text-h2-desktop: 32px;
+  --text-h3-desktop: 28px;
+  --text-h4-desktop: 24px;
 
   /* --- WEIGHT ---*/
   --font-weight-regular: 400;
   --font-weight-bold: 700;
+
+  --height-hero: 520px;
 }

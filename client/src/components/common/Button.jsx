@@ -9,9 +9,7 @@ const Button = ({ label, onClick, variant = "primary", disabled = false }) => {
   const themes = {
     primary:
       "bg-blue-france text-white hover:bg-blue-france-hover active:bg-blue-france-active",
-
     accent: "bg-accent-orange text-white hover:opacity-90 active:scale-95",
-
     outline:
       "bg-transparent border-blue-france text-blue-france hover:bg-bg-alt",
   };
@@ -31,4 +29,3 @@ const Button = ({ label, onClick, variant = "primary", disabled = false }) => {
 };
 
 export default Button;
-

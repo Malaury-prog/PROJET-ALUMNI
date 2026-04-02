@@ -377,25 +377,31 @@ Conformément au protocole de test, les points suivants ont été vérifiés sur
 ## Architecture de Sécurité : Le répertoire Public
 
 ### Implémentation du Web Root
+
 - **Dossier /public :** Désigné comme l'unique racine web du serveur Backend.
 - **index.php :** Mise en place d'un Front Controller servant de point d'entrée unique pour toutes les requêtes HTTP.
 
 ### Isolation des Composants Sensibles
+
 - **Principe de moindre exposition :** En isolant le code métier (`src/`), les dépendances (`vendor/`) et la configuration (`.env`) en dehors du dossier public, on élimine les risques d'accès direct aux fichiers sensibles par URL.
 
 ### Note Pédagogique (Jury Juin)
+
 "Le choix d'un dossier /public séparé est une norme de sécurité de l'industrie (standard sur Symfony ou Laravel). Cela garantit que si un utilisateur tente d'accéder à l'adresse `monsite.fr/.env`, il recevra une erreur 404 car le serveur ne connaît que le contenu du dossier public. C'est une protection proactive contre les cyberattaques de type 'Directory Traversal'."
 
 ## Stratégie d'Intégration et Design System
 
 ### Architecture des Composants
+
 - **Modularité :** Adoption d'une structure orientée composants (`/src/components`).
 - **Découplage :** Le fichier `App.jsx` sert de conteneur principal (Layout), tandis que les composants gèrent leur propre logique visuelle.
 
 ### Identité Visuelle (Typographie & Couleurs)
+
 - **Variables CSS :** Centralisation des tokens de design dans le bloc `@theme` de Tailwind v4 pour une maintenance simplifiée.
 
 ### Note Pédagogique (Jury Juin)
+
 "L'intégration ne se limite pas à reproduire un visuel, c'est la mise en place d'un système. En utilisant les variables CSS au sein du thème Tailwind v4, je crée un 'Single Source of Truth' (Source unique de vérité). Si la charte graphique de l'Alumni GRETA évolue, je ne modifie qu'une seule ligne de code pour mettre à jour l'ensemble de l'application. C'est une preuve de scalabilité."
 
 ---
@@ -403,15 +409,18 @@ Conformément au protocole de test, les points suivants ont été vérifiés sur
 ## Organisation Structurelle & Identité Visuelle
 
 ### Architecture des Dossiers
+
 - **src/pages/ :** Regroupement des vues principales pour une gestion optimisée du React Router.
 - **src/components/ :** Bibliothèque de composants atomiques et modulaires.
 - **src/assets/fonts/ :** Stockage local des polices de caractères pour garantir l'affichage multi-support.
 
 ### Typographie Officielle
+
 - **Font :** Marianne (Police officielle du Système de Design de l'État - DSFR).
 - **Méthode d'import :** Utilisation de la règle `@font-face` pour l'auto-hébergement, évitant ainsi la dépendance à des CDN externes et renforçant la confidentialité des données.
 
 ### Note Pédagogique (Jury Juin)
+
 "L'utilisation de la police Marianne n'est pas qu'un choix esthétique, c'est une mise en conformité avec le **DSFR (Design System de l'État Français)**. Techniquement, l'auto-hébergement des polices améliore les performances (réduction du temps de latence DNS) et assure que le design reste identique, quel que soit l'appareil utilisé par le jury."
 
 ---
@@ -419,46 +428,55 @@ Conformément au protocole de test, les points suivants ont été vérifiés sur
 ## Architecture de Navigation & Design Tokens
 
 ### Routage Applicatif
+
 - **Bibliothèque :** `react-router-dom` v6+.
 - **Concept :** Mise en place d'un système de navigation côté client (Client-Side Routing) pour une expérience utilisateur fluide (SPA).
 
 ### Systématisation du Design (Tokens)
+
 - **Typographie :** Importation de la police Marianne (DSFR) et liaison avec le moteur Tailwind v4 via les variables CSS.
 - **Couleurs :** Définition des constantes chromatiques (Bleu France, Or Luxury) extraites de la maquette Figma.
 - **Unités :** Utilisation de l'échelle de 4px standard de Tailwind pour assurer la cohérence des marges et paddings.
 
 ### Note Pédagogique (Jury Juin)
+
 "La mise en place de Design Tokens avant l'intégration permet de garantir l'homogénéité visuelle. Si le design système évolue, je ne modifie que les variables dans le bloc `@theme`. Concernant le routage, l'utilisation de React Router démontre ma compréhension des Single Page Applications : l'application ne recharge pas la page entière, elle 'swappe' dynamiquement les composants selon l'URL, optimisant ainsi les performances réseau et le confort de navigation."
 
 ## Typographie Responsive & Système de Radius
 
 ### Implémentation technique
+
 - **Adaptabilité :** Double déclaration des échelles de texte (Desktop vs Mobile) pour garantir une lisibilité optimale sur tous les terminaux.
 - **Radius Harmonique :** Utilisation d'une échelle d'arrondis progressive (4px à 16px) pour adoucir l'interface tout en restant dans les standards du DSFR.
 - **Unités :** Conversion des valeurs Figma en pixels fixes dans le thème pour une fidélité 1:1.
 
 ### Note Pédagogique (Jury Juin)
+
 "La gestion de la typographie responsive est un enjeu majeur d'accessibilité. En isolant les tailles de texte pour le mobile et le desktop dès la configuration du thème, je m'assure que l'expérience utilisateur reste cohérente sans effort supplémentaire lors de l'intégration. De plus, le système de 'Radius' permet de hiérarchiser les éléments : un petit arrondi pour les boutons, un plus grand pour les cartes de profil Alumni, créant ainsi une structure visuelle intuitive."
 
 ## Comprendre le passage du HTML au JSX
+
 ### Pourquoi le JSX ?
-- **Nature du JSX :** Ce n'est pas du HTML, mais une extension syntaxique du JavaScript. 
+
+- **Nature du JSX :** Ce n'est pas du HTML, mais une extension syntaxique du JavaScript.
 - **Rôle :** Il permet de décrire ce que l'interface utilisateur (UI) doit devenir. React se charge ensuite de transformer ce code en véritables balises DOM pour le navigateur.
 
 ### Logique de Décomposition
+
 - **Le Composant :** C'est une fonction qui retourne un élément visuel.
 - **Les Props :** Ce sont des paramètres que l'on passe au composant pour le personnaliser (ex: changer le texte du bouton).
 - **Le Style :** Utilisation de constantes de texte pour stocker les classes Tailwind, ce qui rend le code plus lisible et facile à maintenir.
 
-
 ## Architecture Avancée : Composants à Variants
 
 ### Concept des Variants
+
 - **Définition :** Utilisation d'un objet JavaScript servant de "dictionnaire" de styles.
 - **Fonctionnement :** La prop `variant` sert de clé pour extraire dynamiquement les classes CSS Tailwind correspondantes.
 - **Avantage :** Centralisation totale du design. Une modification dans le dictionnaire impacte tous les boutons du site instantanément.
 
 ### Analyse du code (Button.jsx)
+
 1. **baseStyles :** Stocke les propriétés immuables (padding, police, bordures).
 2. **stylesParCouleur :** Mappe les intentions (primary, danger) aux codes couleurs du Design System (Bleu-France, Rouge-Greta).
 3. **Template Literal :** L'expression `${...}` permet de fusionner proprement les chaînes de caractères de styles.
@@ -466,10 +484,289 @@ Conformément au protocole de test, les points suivants ont été vérifiés sur
 ## 📁 Nomenclature et Organisation des Ressources (Assets)
 
 ### 📋 Architecture du répertoire /assets
+
 - **Classification par type :** Séparation stricte entre les polices (`fonts`), les éléments iconographiques (`icons`) et les médias visuels (`images`).
 - **Sous-catégorisation :** Utilisation de répertoires dédiés pour les logos et les fonds de page (`backgrounds`) afin d'optimiser la gestion des ressources graphiques.
 
 ### 🔧 Logique de maintenance
+
 - **Uniformisation :** Tous les médias sont centralisés dans `src/assets` pour bénéficier de la compilation et de l'optimisation par le bundler (Vite).
 - **Évolutivité :** Cette structure permet d'ajouter de nouvelles catégories (ex: `videos` ou `json`) sans perturber l'arborescence existante.
 
+## Séance du Mardi et Mercedi
+
+-**Intégration HTML5 & REACT avec TAILWIND V4:** Echec de l'intégration, review de toutes la documentation afin de repartir sur de bonnes bases, TPDEV2025, Youtube ect. Voir Liens sur NOTIONS.
+
+# Documentation - Projet Alumni GRETA
+
+### Séance du jeudi 02/04/2026:
+
+# Documentation - Projet Alumni GRETA
+
+## Stack technique
+- **Front-end** : React + Vite JS
+- **Styles** : Tailwind CSS v4 + tokens DSFR
+- **Back-end** : PHP vanilla (API REST)
+- **BDD** : MariaDB + phpMyAdmin
+- **Serveur** : YunoHost + Nginx (VM locale)
+
+---
+
+## Règles Tailwind v4 — Variables custom
+
+Les variables CSS définies dans `@theme` génèrent automatiquement 
+des classes Tailwind. Le namespace est retiré dans le nom de classe :
+
+| Variable CSS | Classe Tailwind | Usage |
+|---|---|---|
+| `--spacing-6w` | `gap-6w` | gap |
+| `--spacing-3w` | `px-3w` | padding horizontal |
+| `--spacing-2v` | `py-2v` | padding vertical |
+| `--color-blue-france` | `bg-blue-france` | fond |
+| `--color-blue-france` | `text-blue-france` | texte |
+| `--radius-default` | `rounded-default` | arrondi |
+| `--font-marianne` | `font-marianne` | police |
+| `--text-h4` | `text-h4` | taille texte |
+| `--font-weight-bold` | `font-weight-bold` | graisse |
+
+**Règle** : `--[namespace]-[nom]` → `[utilitaire]-[nom]`
+Le namespace (`spacing`, `color`, `radius`...) disparaît.
+
+---
+
+## Import d'image avec Vite
+
+Toujours importer les images comme un module — jamais de 
+chemin relatif dans `src="..."` :
+```jsx
+// ✅ Correct
+import logo from "../../assets/images/logos/fichier.png";
+<img src={logo} />
+
+// ❌ Incorrect
+<img src="../../assets/images/logos/fichier.png" />
+```
+
+**Pourquoi ?** Vite compile et optimise les fichiers. 
+Sans import, le chemin devient invalide au build.
+
+**Exception** : les fichiers dans `public/` peuvent être 
+appelés directement sans import.
+
+---
+
+## Composants React — Structure de base
+
+Deux syntaxes valides et équivalentes :
+```jsx
+// Syntaxe 1 — Arrow function
+const MonComposant = ({ prop1, prop2 }) => {
+  return (
+    <div>{prop1}</div>
+  );
+};
+export default MonComposant;
+
+// Syntaxe 2 — Function declaration (Charly)
+export default function MonComposant({ prop1, prop2 }) {
+  return (
+    <div>{prop1}</div>
+  );
+}
+```
+
+**3 éléments obligatoires** :
+1. Définition de la fonction
+2. `return (...)` avec parenthèse sur la même ligne
+3. `export default NomComposant`
+
+---
+
+## Props — Passer des données à un composant
+```jsx
+// Définition avec valeurs par défaut
+const Button = ({ 
+  label, 
+  onClick, 
+  variant = "primary",   // valeur par défaut
+  disabled = false       // valeur par défaut
+}) => { ... };
+
+// Utilisation
+<Button label="Connexion" variant="primary" />
+<Button label="S'inscrire" variant="accent" />
+<Button label="Annuler" disabled={true} />
+```
+
+---
+
+## Rendu conditionnel
+
+Afficher un élément seulement si une condition est vraie :
+```jsx
+// React
+{estConnecte && <a href="/profil">Mon profil</a>}
+
+// Équivalent PHP
+if ($estConnecte) {
+    echo '<a href="/profil">Mon profil</a>';
+}
+```
+
+---
+
+## .map() — Boucle sur un tableau
+
+Équivalent du `foreach` PHP pour afficher une liste :
+```jsx
+// React
+apprenants.map((apprenant) => (
+  <CarteApprenant 
+    nom={apprenant.nom} 
+    formation={apprenant.formation} 
+  />
+))
+
+// Équivalent PHP
+foreach ($apprenants as $apprenant) {
+    echo "<div>" . $apprenant['nom'] . "</div>";
+}
+```
+
+---
+
+## Commentaires en JSX
+```jsx
+// ✅ Correct — dans le JSX
+{/* Mon commentaire */}
+
+// ❌ Incorrect — dans le JSX
+// Mon commentaire
+```
+
+---
+
+## Flex et justify-between
+
+`justify-between` écarte les **enfants directs** entre eux.
+`w-full` obligatoire sur le conteneur sinon pas d'espace à écarter.
+```jsx
+// ✅ Correct — 3 enfants directs
+<header className="flex justify-between w-full">
+  <Logo />          {/* enfant 1 — poussé à gauche */}
+  <nav />           {/* enfant 2 — centré */}
+  <Button />        {/* enfant 3 — poussé à droite */}
+</header>
+
+// ❌ Incorrect — 1 seul enfant, rien à écarter
+<header className="flex justify-between">
+  <div>
+    <Logo />
+    <Button />
+  </div>
+</header>
+```
+
+---
+
+## Largeur maximale DSFR
+
+Centrer le contenu avec une largeur max conforme DSFR :
+```jsx
+<header className="w-full bg-bg-default">
+  <div className="max-w-7xl mx-auto px-3w py-2v flex justify-between items-center">
+    ...
+  </div>
+</header>
+```
+
+- `max-w-7xl` = 1280px (proche des 1224px du DSFR)
+- `mx-auto` = centré horizontalement
+
+---
+
+## Style CSS inline en React
+
+Pour les propriétés CSS non disponibles en Tailwind 
+(ex: background-image) :
+```jsx
+<section
+  style={{
+    backgroundImage: `url(${heroBg})`,  // url() obligatoire pour background-image
+    backgroundSize: "cover",             // camelCase (pas background-size)
+    backgroundPosition: "center",
+  }}
+>
+```
+
+**Règle** : les tirets CSS deviennent des majuscules en React
+(`background-size` → `backgroundSize`)
+
+---
+
+## Chemins relatifs — Règle de navigation
+
+Depuis `src/layout/Hero.jsx` :
+```
+../../assets/...        → remonte layout/ puis src/
+../components/common/   → remonte layout/, entre dans components/
+```
+
+Depuis `src/components/common/Logo.jsx` :
+```
+../../assets/...        → remonte common/ puis components/
+```
+
+**Astuce** : glisser un fichier depuis l'explorateur VSCode 
+dans le code génère automatiquement le bon chemin.
+
+---
+
+## Tokens JWT — 4 méthodes de stockage
+
+| Méthode | Persiste | Accessible JS | Sécurité |
+|---|---|---|---|
+| localStorage | Oui | Oui | Faible |
+| sessionStorage | Onglet | Oui | Faible |
+| Cookie HttpOnly | Oui | **Non** | **Forte** |
+| Mémoire JS | Non | Oui | Forte |
+
+**Pour ce projet** : Cookie `HttpOnly` généré par PHP.
+JavaScript ne peut pas le lire → protégé contre XSS.
+
+---
+
+## Pièges courants
+
+- `gap-spacing-6w` ❌ → `gap-6w` ✅
+- `// commentaire` dans JSX ❌ → `{/* commentaire */}` ✅  
+- `src="../../image.png"` ❌ → `import img` puis `src={img}` ✅
+- `return` seul sur sa ligne ❌ → `return (` sur la même ligne ✅
+- `<li>` vide ❌ → commentaire JSX en dehors des `<li>` ✅
+- Chemin absolu dans import ❌ → chemin relatif `../../` ✅
+
+---
+
+## Avancement du projet
+
+### Composants terminés
+- [x] `Button.jsx` — 3 variantes (primary, accent, outline)
+- [x] `Logo.jsx` — logo RF + texte "Annuaire ALUMNI"
+- [x] `Header.jsx` — nav complète avec justify-between
+- [x] `Hero.jsx` — image de fond + titre + bouton
+
+### À faire
+- [ ] Carrousel Hero (2 images en défilement)
+- [ ] Section "Découvrez les derniers profils"
+- [ ] Section "Notre Mission"
+- [ ] Section chiffres clés
+- [ ] Section features (Mentorat, Opportunités, Visibilité)
+- [ ] Section CTA finale
+- [ ] Footer
+- [ ] Page Annuaire
+- [ ] Page Profil
+- [ ] Formulaire d'inscription
+- [ ] Page Login
+- [ ] Dashboard Admin
+- [ ] Back-end PHP (API REST)
+- [ ] Connexion BDD MariaDB

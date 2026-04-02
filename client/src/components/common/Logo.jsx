@@ -1,17 +1,17 @@
 import React from "react";
-import logoRF from "../../assets/images/logos/Republique-francaise-logo.svg.png";
+import logoRF from "../../assets/images/logos/Republique-francaise-logo.png";
 
 const Logo = () => {
   return (
     <div className="flex items-center gap-2w">
-      <div className="flex items-center gap-2w">
-        <img src={logoRF} alt="Logo de la République Française." />
-      </div>
-      <div className="flex items-center gap-2w">
-        <span className="font-marianne font-weight-h1 text-h4 text-blue-france">
-          Annuaire <span className="text-accent-orange">ALUMNI</span>
-        </span>
-      </div>
+      <img
+        src={logoRF}
+        alt="Logo de la République Française."
+        className="h-10 w-auto"
+      />
+      <span className="font-marianne font-weight-bold text-h4 text-blue-france">
+        Annuaire <span className="text-accent-orange">ALUMNI</span>
+      </span>
     </div>
   );
 };
