@@ -92,6 +92,8 @@
   /* --- WEIGHT ---*/
   --font-weight-regular: 400;
   --font-weight-bold: 700;
-
+  /*--- HEIGHT ---*/
   --height-hero: 520px;
+  --height-logo-mobile: 40px;
+  --height-logo-desktop: 60px;
 }
