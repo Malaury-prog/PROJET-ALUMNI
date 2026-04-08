@@ -1,12 +1,10 @@
-// App.jsx
-import Header from "../src/layout/Header.jsx";
-import LandingPage from "../src/pages/Landingpage.jsx";
+import Layout from "./layout/Layout";
+import LandingPage from "./pages/LandingPage";
 
-export default function App() {
+function App() {
   return (
-    <>
-      <Header />
+    <Layout>
       <LandingPage />
-    </>
+    </Layout>
   );
 }
