@@ -1,14 +1,12 @@
-import React from "react";
-import Header from "./layout/Header.jsx";
-import Hero from "./layout/Hero.jsx";
+// App.jsx
+import Header from "../src/layout/Header.jsx";
+import LandingPage from "../src/pages/Landingpage.jsx";
 
-function App() {
+export default function App() {
   return (
     <>
       <Header />
-      <Hero />
+      <LandingPage />
     </>
   );
 }
-
-export default App;

@@ -5,10 +5,12 @@ import Logo from "../components/common/Logo"; // Importation du Logo
 
 const Header = () => {
   const [menuOuvert, setMenuOuvert] = useState(false);
+
   /**
    * Bascule l'état du menu mobile ouvert/fermé
    * @returns {void}
    */
+
   const toggleMenu = () => {
     setMenuOuvert(!menuOuvert);
   };

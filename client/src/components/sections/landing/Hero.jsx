@@ -1,6 +1,6 @@
 import React from "react";
 import heroBg from "/src/assets/images/background/lyceeDecomble.jpg";
-import Button from "../components/common/Button";
+import Button from "../../common/Button";
 
 const Hero = () => {
   return (
