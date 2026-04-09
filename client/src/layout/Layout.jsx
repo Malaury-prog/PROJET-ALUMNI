@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./Header";
+import Footer from "./Footer";
 
 /**
  * Layout principal de l'application
@@ -12,8 +13,8 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main>{children}</main>
-      {/* <Footer /> */}
+      <main className="w-full flex flex-col gap-16v">{children}</main>
+      <Footer />
     </>
   );
 }

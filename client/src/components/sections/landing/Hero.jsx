@@ -5,7 +5,7 @@ import Button from "../../common/Button";
 const Hero = () => {
   return (
     <section
-      className="relative w-full h-[300px] md:h-hero flex items-center justify-center"
+      className="relative w-full h-[300px] md:h-hero flex items-center justify-center "
       style={{
         backgroundImage: `url(${heroBg})`,
         backgroundSize: "cover",

@@ -1,7 +1,9 @@
 import Layout from "./layout/Layout";
-import LandingPage from "./pages/LandingPage";
+import LandingPage from "./pages/Landingpage";
 
-function App() {
+import React from "react";
+
+export default function App() {
   return (
     <Layout>
       <LandingPage />

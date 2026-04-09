@@ -1,59 +1,38 @@
-export const apprenants = [
-  {
-    id: 1,
-    prenom: "Elvin",
-    nom: "Baudion",
-    avatar: "https://i.pravatar.cc/150?u=elvin",
-    promo: "DWWM",
-    formation: "Maintenance des systèmes - Option A",
-    annee: "2025-2026",
-    github: "https://github.com/mariedurand",
-    linkedin: "https://linkedin.com/in/mariedurand",
-    email: "mailto:baudionelvin@gmail.com",
-    biographie: "Passionné par la maintenance des systèmes - Option A",
-    statut: "en-formation",
-    labelStatut: "En Formation",
-  },
-  {
-    id: 2,
-    prenom: "Sofia",
-    nom: "Reyes",
-    avatar: "https://i.pravatar.cc/150?u=sofia",
-    promo: "BTS SIO",
-    formation: "Solutions Logicielles et Applications Métiers",
-    annee: "2024-2025",
-    github: "",
-    linkedin: "https://linkedin.com/in/sofiareyes",
-    biographie: "Passionnée par le développement d'applications métier.",
-    statut: "en-poste",
-    labelStatut: "En poste",
-  },
-  {
-    id: 3,
-    prenom: "Lucas",
-    nom: "Martin",
-    avatar: "https://i.pravatar.cc/150?u=lucas",
-    promo: "DWWM",
-    formation: "Développeur Web et Web Mobile",
-    annee: "2023-2024",
-    github: "https://github.com/lucasmartin",
-    linkedin: "",
-    biographie: "À la recherche d'une opportunité en développement front-end.",
-    statut: "en-recherche",
-    labelStatut: "En recherche",
-  },
-  {
-    id: 4,
-    prenom: "Amina",
-    nom: "Touré",
-    avatar: "https://i.pravatar.cc/150?u=amina",
-    promo: "BTS MCO",
-    formation: "Management Commercial Opérationnel",
-    annee: "2024-2025",
-    github: "",
-    linkedin: "https://linkedin.com/in/aminatoure",
-    biographie: "Actuellement indisponible — reprise prévue en septembre.",
-    statut: "indisponible",
-    labelStatut: "Indisponible",
-  },
+import { faker } from "@faker-js/faker/locale/fr";
+
+const statuts = [
+  { statut: "en-formation", labelStatut: "En formation" },
+  { statut: "en-poste", labelStatut: "En poste" },
+  { statut: "en-recherche", labelStatut: "En recherche" },
+  { statut: "indisponible", labelStatut: "Indisponible" },
 ];
+
+const formations = [
+  "Développeur Web et Web Mobile",
+  "BTS SIO",
+  "BTS MCO",
+  "BTS HRT",
+  "Maintenance des systèmes",
+];
+
+const promos = ["DWWM", "BTS SIO", "BTS MCO", "BTS HRT"];
+
+export const genererApprenants = (nombre = 20) => {
+  return Array.from({ length: nombre }, (_, i) => {
+    const statut = statuts[Math.floor(Math.random() * statuts.length)];
+    return {
+      id: i + 100,
+      prenom: faker.person.firstName(),
+      nom: faker.person.lastName(),
+      avatar: `https://i.pravatar.cc/150?u=${faker.string.uuid()}`,
+      formation: formations[Math.floor(Math.random() * formations.length)],
+      promo: promos[Math.floor(Math.random() * promos.length)],
+      annee: "2024-2025",
+      linkedin: Math.random() > 0.3 ? faker.internet.url() : "",
+      github: Math.random() > 0.5 ? faker.internet.url() : "",
+      biographie: faker.lorem.sentence(),
+      statut: statut.statut,
+      labelStatut: statut.labelStatut,
+    };
+  });
+};
