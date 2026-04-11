@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Button from "../components/common/Button"; // Importation du Bouton
 import { Menu, X } from "lucide-react";
 import Logo from "../components/common/Logo"; // Importation du Logo
+import { useNavigate, Link } from "react-router-dom"; //Chemin permettant de naviguer d'une page à une autre.
 
 const Header = () => {
   const [menuOuvert, setMenuOuvert] = useState(false);
+  const navigate = useNavigate();
 
   /**
    * Bascule l'état du menu mobile ouvert/fermé
@@ -23,20 +25,20 @@ const Header = () => {
         <nav className="items-center hidden md:flex">
           <ul className="flex items-center gap-6w list-none">
             <li>
-              <a
-                href="#Accueil"
+              <Link
+                to="/"
                 className="text-body text-text-main hover:text-blue-france"
               >
                 Accueil
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#Annuaire"
+              <Link
+                to="/annuaire"
                 className="text-body text-text-main hover:text-blue-france"
               >
                 Annuaire
-              </a>
+              </Link>
             </li>
             {/* TODO : Dashboard et Mon Profil — à ajouter avec estConnecte */}
           </ul>
@@ -45,7 +47,7 @@ const Header = () => {
           <Button
             label="Connexion"
             variant="primary"
-            onClick={() => console.log("Clic sur connexion")}
+            onClick={() => navigate("/connexion")}
           />
         </div>
         <button
@@ -60,23 +62,27 @@ const Header = () => {
         <div className="md:hidden bg-bg-default border-t border-border-default px-3w py-4v">
           <ul className="flex flex-col gap-4v list-none">
             <li>
-              <a
-                href="#Accueil"
+              <Link
+                to="/"
                 className="text-body text-text-main hover:text-blue-france"
               >
                 Accueil
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="#Annuaire"
+              <Link
+                to="/annuaire"
                 className="text-body text-text-main hover:text-blue-france"
               >
                 Annuaire
-              </a>
+              </Link>
             </li>
             <li className="mt-2v">
-              <Button label="Connexion" variant="primary" />
+              <Button
+                label="Connexion"
+                variant="primary"
+                onClick={() => navigate("/connexion")}
+              />
             </li>
           </ul>
         </div>

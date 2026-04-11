@@ -1,14 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import logoRF from "../../assets/images/logos/Republique-francaise-logo.png";
 
 /**
  * Logo de l'application — République Française + nom Alumni GRETA
- * Conforme DSFR : typographie Marianne, couleurs officielles
- * @returns {JSX.Element} Logo composé de l'emblème RF et du nom du site
+ * @returns {JSX.Element}
  */
 const Logo = () => {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex items-center gap-2w">
+    <div
+      className="flex items-center gap-2w cursor-pointer"
+      onClick={() => navigate("/")}
+    >
       <img
         src={logoRF}
         alt="Logo de la République Française."

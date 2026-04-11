@@ -15,7 +15,7 @@ export default function CarteApprenant({
   labelStatut,
 }) {
   return (
-    <article className="flex flex-col grow items-center bg-bg-default rounded-default p-4v md:p-6v min-w-[260px] md:min-w-[280px] ">
+    <article className="flex flex-col grow items-center border border-border-default rounded-default p-4v md:p-6v min-w-[260px] md:min-w-[280px] ">
       <div>
         <img
           className="rounded-full ring-2 ring-accent-orange ring-offset-2 w-20 h-20 object-cover"
