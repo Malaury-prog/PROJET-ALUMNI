@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Button from "../components/common/Button";
 
 /**
@@ -65,17 +66,17 @@ export default function ConnexionPage() {
           </div>
         </form>
         <div className="flex flex-row items-center justify-center gap-2v mt-4v">
+          <Link
+            to="/inscription"
+            className="text-body text-blue-france underline hover:text-blue-france-hover"
+          >
+            Pas encore inscrit?
+          </Link>
           <a
             href="#"
             className="text-body text-blue-france underline hover:text-blue-france-hover"
           >
-            Pas encore inscrit ?
-          </a>
-          <a
-            href="#"
-            className="text-body text-blue-france underline hover:text-blue-france-hover"
-          >
-            Mot de passe oublié ?
+            Mot de passe oublié?
           </a>
         </div>
       </div>

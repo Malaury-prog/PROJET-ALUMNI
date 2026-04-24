@@ -6,6 +6,7 @@ import ConnexionPage from "./pages/ConnexionPage";
 import AnnuairePage from "./pages/AnnuairePage";
 import Page404 from "./pages/Page404";
 import Dashboard from "./pages/Dashboard";
+import InscriptionPage from "./pages/InscriptionPage";
 
 export default function App() {
   return (
@@ -32,6 +33,14 @@ export default function App() {
           element={
             <Layout>
               <AnnuairePage />
+            </Layout>
+          }
+        />
+        <Route
+          path="/inscription"
+          element={
+            <Layout>
+              <InscriptionPage />
             </Layout>
           }
         />

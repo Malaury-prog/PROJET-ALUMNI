@@ -1,14 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import CarteApprenant from "../components/cards/CarteApprenant";
-import mockApprenants from "../data/mockApprenants.json";
-import { genererApprenants } from "../data/mockApprenants";
 
-/**
- * Page Annuaire — Liste complète des apprenants Alumni GRETA
- * @returns {JSX.Element}
- */
 export default function AnnuairePage() {
-  const tousLesApprenants = [...mockApprenants, ...genererApprenants(6)];
+  const [apprenants, setApprenants] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/api/users")
+      .then((response) => response.json())
+      .then((data) => setApprenants(data));
+  }, []);
 
   return (
     <div className="w-full max-w-7xl mx-auto px-3w py-8v">
@@ -22,10 +22,24 @@ export default function AnnuairePage() {
         </p>
       </div>
 
-      {/* TODO : Filtres — à ajouter (formation, statut, promotion) */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6w items-stretch">
-        {tousLesApprenants.map((apprenant) => (
-          <CarteApprenant key={apprenant.id} {...apprenant} />
+        {apprenants.map((apprenant) => (
+          <CarteApprenant
+            key={apprenant.id}
+            prenom={apprenant.prenom}
+            nom={apprenant.nom}
+            avatar={apprenant.avatar_illustre}
+            formation={apprenant.formation}
+            promo={apprenant.promo}
+            annee={apprenant.annee}
+            github={apprenant.github}
+            linkedin={apprenant.linkedin}
+            biographie={apprenant.description}
+            statut={
+              apprenant.labelStatut === "En formation" ? "success" : "info"
+            }
+            labelStatut={apprenant.labelStatut}
+          />
         ))}
       </div>
     </div>
