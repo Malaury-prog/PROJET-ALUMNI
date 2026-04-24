@@ -5,6 +5,7 @@ import LandingPage from "./pages/Landingpage";
 import ConnexionPage from "./pages/ConnexionPage";
 import AnnuairePage from "./pages/AnnuairePage";
 import Page404 from "./pages/Page404";
+import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   return (
@@ -34,14 +35,8 @@ export default function App() {
             </Layout>
           }
         />
-        <Route
-          path="/*"
-          element={
-            <Layout>
-              <Page404 />
-            </Layout>
-          }
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/*" element={<Page404 />} />
       </Routes>
     </BrowserRouter>
   );

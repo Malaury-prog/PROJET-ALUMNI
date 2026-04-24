@@ -1,0 +1,149 @@
+// BDD Alumni GRETA Sud Champagne — V6
+// Corrections appliquées : BIGINT → INT, date_debut/date_fin retirés de parcours
+
+// ========================
+// NIVEAU 1 — Aucune dépendance
+// ========================
+
+Table roles {
+  id int [pk, increment]
+  libelle varchar(50) [not null]
+}
+
+Table statuts {
+  id int [pk, increment]
+  libelle varchar(100) [not null]
+}
+
+Table villes {
+  id int [pk, increment]
+  nom varchar(100) [not null]
+  code_postal varchar(10) [not null]
+}
+
+Table secteurs_greta {
+  id int [pk, increment]
+  nom_secteur varchar(100) [not null]
+}
+
+// ========================
+// NIVEAU 2 — Dépendent du niveau 1
+// ========================
+
+Table utilisateurs {
+  id int [pk, increment]
+  nom varchar(100) [not null]
+  prenom varchar(100) [not null]
+  email varchar(150) [not null, unique]
+  password varchar(255) [not null]
+  avatar_illustre varchar(255)
+  avatar_url varchar(255)
+  description text
+  titre_poste varchar(150)
+  telephone varchar(20)
+  consentement_rgpd boolean [not null, default: false]
+  ville_id int
+  statut_id int
+  created_at datetime [not null, default: `CURRENT_TIMESTAMP`]
+  updated_at datetime
+}
+
+Table formations {
+  id int [pk, increment]
+  titre varchar(150) [not null]
+  code varchar(50)
+  type_produit varchar(100)
+  url_fiche varchar(255)
+  secteur_id int
+}
+
+Table entreprises {
+  id int [pk, increment]
+  nom varchar(150) [not null]
+  activite varchar(100)
+  est_partenaire boolean [not null, default: false]
+  ville_id int
+  secteur_id int
+}
+
+// ========================
+// NIVEAU 3 — Dépendent du niveau 2
+// ========================
+
+Table utilisateur_roles {
+  id int [pk, increment]
+  utilisateur_id int [not null]
+  role_id int [not null]
+}
+
+Table sessions {
+  id int [pk, increment]
+  formation_id int [not null]
+  ville_id int
+  libelle varchar(100)
+  date_debut date
+  date_fin date
+}
+
+Table reseaux {
+  id int [pk, increment]
+  utilisateur_id int [not null]
+  nom_plateforme varchar(100) [not null]
+  url text [not null]
+}
+
+Table contacts {
+  id int [pk, increment]
+  nom varchar(100) [not null]
+  prenom varchar(100)
+  email varchar(150)
+  telephone varchar(20)
+  role varchar(50)
+  entreprise_id int
+}
+
+Table formation_ville {
+  id int [pk, increment]
+  formation_id int [not null]
+  ville_id int [not null]
+}
+
+// ========================
+// NIVEAU 4 — Dépend de tout
+// ========================
+
+Table parcours {
+  id int [pk, increment]
+  utilisateur_id int [not null]
+  formation_id int [not null]
+  session_id int
+  entreprise_id int
+  commentaires text
+}
+
+// ========================
+// RELATIONS
+// ========================
+
+// Niveau 2 → Niveau 1
+Ref: utilisateurs.ville_id > villes.id
+Ref: utilisateurs.statut_id > statuts.id
+Ref: formations.secteur_id > secteurs_greta.id
+Ref: entreprises.ville_id > villes.id
+Ref: entreprises.secteur_id > secteurs_greta.id
+
+// Niveau 3 → Niveaux 1 & 2
+Ref: utilisateur_roles.utilisateur_id > utilisateurs.id
+Ref: utilisateur_roles.role_id > roles.id
+Ref: sessions.formation_id > formations.id
+Ref: sessions.ville_id > villes.id
+Ref: reseaux.utilisateur_id > utilisateurs.id
+Ref: contacts.entreprise_id > entreprises.id
+Ref: formation_ville.formation_id > formations.id
+Ref: formation_ville.ville_id > villes.id
+
+// Niveau 4 → Tout
+Ref: parcours.utilisateur_id > utilisateurs.id
+Ref: parcours.formation_id > formations.id
+Ref: parcours.session_id > sessions.id
+Ref: parcours.entreprise_id > entreprises.id
